@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "monolog/monolog": "^1.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "app/src/api/"
+        },
+        "classmap": ["../core/DataLayer", "../core/Http","app/src/api/"],
+        "files": ["../core/config.php"],
+        "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
+    }
+}
