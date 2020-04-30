@@ -18,10 +18,10 @@ use Api\ErrorList as ErrorList;
  * @param callable $next
  * @return \Psr\Http\Message\ResponseInterface
  */
-/*$app->add( function (Request $request, Response $response, callable $next) use($container) {
+$app->add( function (Request $request, Response $response, callable $next) use($container) {
     //echo "test";
     //$headers = $request->getHeaders();
-    $headers=$container->get('headerInfo');
+    /*$headers=$container->get('headerInfo');
 
 
     //print_r($headers);//
@@ -33,9 +33,9 @@ use Api\ErrorList as ErrorList;
         if ($headers[HeaderKey::API_KEY] !== $apikey) {
             return ResponseHelper::createfailureResponse($response, HTTPStatusCodes::FORBIDDEN, ErrorList::INVALID_API_KEY);
         }
-    }
+    }*/
         return $next($request, $response);
-});*/
+});
 /*$app->add( function (Request $request, Response $response, callable $next) use($container) {
     //$headers = getHeaders($request);
     $headers=$container->get('headerInfo');

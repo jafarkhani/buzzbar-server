@@ -13,7 +13,7 @@ return [
         //'APIKey' => 'AIzaSyClzfrOzB818x55$FASHvX4JuGQ!ciR9lv7q',
         // Monolog settings
         'logger' => [
-            'name' => 'sport-service',
+            'name' => 'profportfolio-service',
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],

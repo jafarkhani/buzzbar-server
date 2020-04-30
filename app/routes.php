@@ -5,7 +5,8 @@
  * Date: 12/31/18
  * Time: 3:24 PM
  */
-
+error_reporting(1);
+ini_set("display_errors", E_ALL);
 use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
 
@@ -38,7 +39,7 @@ $app->get('/super', function ($request, $response, $args) {
         return $response->write(" Super Groups Select***** " );
 });
 
-$app->get('/helo/{name}', function($request, $response, $args) {
+$app->get('/hello/{name}', function($request, $response, $args) {
 
     return $response->write( "Hello, " . $args['name']);
 });
