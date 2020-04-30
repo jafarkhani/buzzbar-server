@@ -15,12 +15,12 @@ use InputValidation;
 
 class SuperGroup extends BaseClass {
 
-    const TableName = "TPF_SuperGroups";
+    const TableName = "SuperGroups";
     const TableKey = "SuperGroupID";
-    const ClassDesc = "سرگروه آیتم های کارنما";
+    const ClassDesc = "سرگروه آیتم های کارنمای جامع";
 
-    const SuperGroupPTitle = "عنوان فارسی کارنما";
-    const SuperGroupETitle = "عنوان لاتین کارنما";
+    const SuperGroupPTitle = "عنوان فارسی کارنمای جامع";
+    const SuperGroupETitle = "عنوان لاتین کارنمای جامع";
     const SuperGroupOrder = "ترتیب نمایش";
 
     public $SuperGroupID;
@@ -49,7 +49,7 @@ class SuperGroup extends BaseClass {
     }
     public function GetAll(){
       $mysql = parent::getReportDBConnection();
-      $query = "SELECT * FROM TPF_SuperGroups where RecordStatus<>'DELETED' order by SuperGroupOrder";
+      $query = "SELECT * FROM SuperGroups where RecordStatus<>'DELETED' order by SuperGroupOrder";
       $mysql->Prepare($query);
       $objArray = $mysql->ExecuteStatement(array());
       $objArray = $objArray->fetchAll();
