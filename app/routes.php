@@ -39,7 +39,7 @@ $app->get('/super', function ($request, $response, $args) {
         return $response->write(" Super Groups Select***** " );
 });
 
-$app->get('/hello/{name}', function($request, $response, $args) {
+$app->get('/helo/{name}', function($request, $response, $args) {
 
     return $response->write( "Hello, " . $args['name']);
 });
