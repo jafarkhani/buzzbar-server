@@ -9,8 +9,8 @@ return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
-        //'hashSalt' => 'M1cr0S3rv1c3#1398@StW*',
-        'APIKey' => 'AIzaSyClzfrOzB818x55$FASHvX4JuGQ!ciR9lv7q',
+        'hashSalt' => 'M1cr0S3rv1c3#1398@StW*',
+        //'APIKey' => 'AIzaSyClzfrOzB818x55$FASHvX4JuGQ!ciR9lv7q',
         // Monolog settings
         'logger' => [
             'name' => 'sport-service',
@@ -20,9 +20,9 @@ return [
 
         "default_db" => [
             "host" => config::$db_servers['master']["host"],
-            "dbname" => config::$db_servers['master']["sport_db"],
-            "user" => config::$db_servers['master']["sport_user"],
-            "pass" => config::$db_servers['master']["sport_pass"]
+            "dbname" => config::$db_servers['master']["profportfolio_db "],
+            "user" => config::$db_servers['master']["profportfolio_user "],
+            "pass" => config::$db_servers['master']["profportfolio_pass"]
         ]
     ],
 ];

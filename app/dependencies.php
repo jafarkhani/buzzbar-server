@@ -7,19 +7,19 @@
  */
 
 // DIC configuration
+use Api\Controllers\SuperGroupsController;
+use Api\Controllers\GroupsController;
+
+use Api\Models\SuperGroup;
+use Api\Models\Groups;
+
+
+
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Monolog\Processor\UidProcessor;
 use Api\ErrorList;
-/*
-use Api\Models\SportClassFields;
-use Api\Models\SportClasses;
-
-use Api\Controllers\SportClassFieldController;
-use Api\Controllers\SportClassController;
-use Api\Controllers\SchedulerController;
-*/
-
+use Api\Classes\CreditsUtils;
 
 
 $container = $app->getContainer();
@@ -52,6 +52,7 @@ $container['pdo'] = function ($c) {
 
 //Save Header information in headerInfo instead of SESSION
 $container['headerInfo'] = function ($c) {
+
     $request = $c->get('request');
     $headerKeys = HeaderKey::getConstants();
     $headers = $request->getHeaders();
@@ -90,29 +91,28 @@ $container['headerInfo'] = function ($c) {
         HeaderKey::SYS_KEY => $headers[HeaderKey::SYS_KEY][0],
         HeaderKey::IP_ADDRESS => $headers[HeaderKey::IP_ADDRESS][0],
         HeaderKey::H_TOKEN => $headers[HeaderKey::H_TOKEN][0],
-        HeaderKey::API_KEY => $headers[HeaderKey::API_KEY][0]
+        //HeaderKey::API_KEY => $headers[HeaderKey::API_KEY][0]
 
     );
-
+    return array();
 };
 
 //$container['upload_directory'] = function () {
 //    return ('/attachments/StudentWorkDocs/');
 //};
 
-/*
-$container[SportClassFieldController::class] = function ($c) {
-    $sportClassFields = new SportClassFields($c->get('headerInfo'));
-    return new SportClassFieldController($c, $sportClassFields);
+$container[SuperGroupsController::class] = function ($c) {
+    $SuperGroup = new SuperGroup($c->get('headerInfo'));
+    return new SuperGroupsController($c,$SuperGroup);
 };
-$container[SportClassController::class] = function ($c) {
-    $sportClasses = new SportClasses($c->get('headerInfo'));
-    return new SportClassController($c, $sportClasses);
-};
-*/
 
-/*$container[SchedulerController::class] = function ($c) use ($app) {
-    $sportClasses = new SportClasses($c->get('headerInfo'));
-    return new SchedulerController($c, $app);
+$container[GroupsController::class] = function ($c) {
+    $Groups = new Groups($c->get('headerInfo'));
+    return new GroupsController($c,$Groups);
+};
+
+/*$container[LectureController::class] = function ($c) {
+    $lecture = new lecture($c->get('headerInfo'));
+    $doc = new DocAttachment($c->get('headerInfo'));
+    return new LectureController($c,$lecture,$doc);
 };*/
-//SchedulerController

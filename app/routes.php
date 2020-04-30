@@ -6,12 +6,24 @@
  * Time: 3:24 PM
  */
 
-// Api Routes
-$app->group('/sportclass/api/v1', function () {
+use Api\Controllers\SuperGroupsController;
+use Api\Controllers\GroupsController;
 
+// Api Routes
+
+$app->group('/karnama/api/v1', function () {
+    $this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
+    $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
+    /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
+    $this->post('/supergroups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
+    $this->put('/supergroups/update/{id}', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
+    $this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
+
+    $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
 });
 
 
+/*
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
@@ -22,3 +34,4 @@ $app->get('/hello/{name}', function($request, $response, $args) {
 
     return $response->write( "Hello, " . $args['name']);
 });
+*/
