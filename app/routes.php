@@ -11,7 +11,7 @@ use Api\Controllers\GroupsController;
 
 // Api Routes
 
-$app->group('/karnama/api/v1', function () {
+$app->group('/profportfolio/api/v1', function () {
     $this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
     $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
