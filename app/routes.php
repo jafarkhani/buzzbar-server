@@ -12,7 +12,11 @@ use Api\Controllers\GroupsController;
 // Api Routes
 
 $app->group('/profportfolio/api/v1', function () {
-    $this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
+	$app->get('/supergroups/select', function ($request, $response, $args) {
+    //echo $_SERVER['DOCUMENT_ROOT'];
+        return $response->write(" Super Groups Select***** " );
+});
+    //$this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
     $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
     $this->post('/supergroups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
@@ -28,6 +32,10 @@ $app->group('/profportfolio/api/v1', function () {
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
         return $response->write("Hello***** " );
+});
+$app->get('/supergroups/select', function ($request, $response, $args) {
+    //echo $_SERVER['DOCUMENT_ROOT'];
+        return $response->write(" Super Groups Select***** " );
 });
 
 $app->get('/hello/{name}', function($request, $response, $args) {
