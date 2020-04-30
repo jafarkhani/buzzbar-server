@@ -33,7 +33,7 @@ $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
         return $response->write("Hello***** " );
 });
-$app->get('/supergroups/select', function ($request, $response, $args) {
+$app->get('/hello/select', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
         return $response->write(" Super Groups Select***** " );
 });
