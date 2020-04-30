@@ -27,7 +27,7 @@ $app->group('/profportfolio/api/v1', function () {
     $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
 });
 
-
+/*
 
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
@@ -43,4 +43,4 @@ $app->get('/helo/{name}', function($request, $response, $args) {
 
     return $response->write( "Hello, 111 " . $args['name']);
 });
-
+*/
