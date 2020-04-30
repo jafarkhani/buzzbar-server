@@ -23,7 +23,7 @@ $app->group('/profportfolio/api/v1', function () {
 });
 
 
-/*
+
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
@@ -34,4 +34,4 @@ $app->get('/hello/{name}', function($request, $response, $args) {
 
     return $response->write( "Hello, " . $args['name']);
 });
-*/
+
