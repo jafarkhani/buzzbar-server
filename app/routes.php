@@ -32,7 +32,7 @@ $app->group('/profportfolio/api/v1', function () {
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write("Hello***** " );
+        return $response->write("Hello 1234***** " );
 });
 $app->get('/super', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
@@ -41,6 +41,6 @@ $app->get('/super', function ($request, $response, $args) {
 
 $app->get('/helo/{name}', function($request, $response, $args) {
 
-    return $response->write( "Hello, " . $args['name']);
+    return $response->write( "Hello, 111 " . $args['name']);
 });
 
