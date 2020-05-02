@@ -163,7 +163,7 @@ class BaseController
     }
 
     public function select(Request $request, Response $response, array $args)
-  {echo 'nnnn';
+  {echo 'nnnn';die();
       try{
           //$params= $request->getParsedBody();
 
