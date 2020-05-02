@@ -194,7 +194,7 @@ echo ' validate ';
             if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
-            }echo 'yyy';
+            }echo 'yy';
 
             $this->obj->doInsert($params);
             $index = $this->obj->{$this->obj->getTablePk()};echo 'bbbb';
@@ -218,7 +218,7 @@ echo ' validate ';
                 self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
             }*/
 
-            return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::CREATED);
+            //return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::CREATED);
 
         }catch (\Exception $ex) {
 
