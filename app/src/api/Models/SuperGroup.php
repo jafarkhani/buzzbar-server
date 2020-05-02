@@ -39,7 +39,7 @@ class SuperGroup extends BaseClass {
     public function __construct($headerInfo = array(), $id =null)
     {
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->SuperGroupPTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->SuperGroupPTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->SuperGroupETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->SuperGroupOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
@@ -56,4 +56,5 @@ class SuperGroup extends BaseClass {
       InputValidation::ArrayEncoding($objArray);
       return $objArray;
     }
+
 }
