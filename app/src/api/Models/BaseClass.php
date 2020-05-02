@@ -312,7 +312,8 @@ class BaseClass extends EntityClass{
 
     public function existId(){
 
-        if($this->id()!== null){
+        if($this->id()!== null){echo "SELECT * FROM ".self::getTableName()
+                ." WHERE ".self::getTablePk()." = :id";echo $this->id();
             $result = parent::runquery("SELECT * FROM ".self::getTableName()
                 ." WHERE ".self::getTablePk()." = :id", array(":id" =>  $this->id()) );
 
