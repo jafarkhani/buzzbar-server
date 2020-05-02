@@ -231,7 +231,7 @@ class BaseController
         try{
             $params= $request->getParsedBody();print_r($params);
             //$file = $request->getUploadedFiles();
-
+            print_r($args);
             //input validation
             $this->obj->validateParams($params);
 
