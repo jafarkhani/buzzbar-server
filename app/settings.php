@@ -5,6 +5,13 @@
  * Date: 12/31/18
  * Time: 12:26 PM
  */
+echo 'show connection vars';
+echo $db_servers['master']["host"];
+        echo $db_servers['master']["profportfolio_db "];
+        echo $db_servers['master']["profportfolio_user "];
+        echo $db_servers['master']["profportfolio_pass"];
+echo 'end';
+
 return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
@@ -17,6 +24,8 @@ return [
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        
 
         "default_db" => [
             "host" => config::$db_servers['master']["host"],
