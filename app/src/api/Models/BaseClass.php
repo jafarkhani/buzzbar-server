@@ -236,7 +236,7 @@ class BaseClass extends EntityClass{
 
     public static function validateParams(&$args)
     {
-        $params = null;
+        $params = null;echo 'ok';
         if ($args && !is_array($args)) {
 
             $tmp = explode('/', $args);
@@ -253,7 +253,8 @@ class BaseClass extends EntityClass{
         }else{
             $params = $args;
         }
-        if ($params) {
+        echo ' ok2 ';
+        if ($params) {echo ' ok3 ';
             // remove empty elements
             array_filter($params,function($value) { return $value !== ''; });
 
@@ -261,10 +262,10 @@ class BaseClass extends EntityClass{
                 $params[self::getTablePk()]=$params['id'];
                 unset($params['id']);
             }
-
+            echo ' ok4 ';
             $class= get_called_class();
             $obj= new $class();
-            $properties = get_object_vars($obj);
+            $properties = get_object_vars($obj);echo ' ok5 ';
             // Check for invalid query parameters
             if ($properties) {
                 foreach ($properties as $property => $specification) {
