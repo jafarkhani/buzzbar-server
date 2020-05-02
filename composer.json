@@ -7,8 +7,8 @@
         "psr-4": {
             "Api\\": "app/src/api/"
         },
-        "classmap": ["../core/DataLayer", "../core/Http","app/src/api/"],
-        "files": ["../core/config.php"],
+        "classmap": ["../core/DataLayer", "../core/Http","app/src/api/", "../core/SharedModules/" ],
+        "files": ["../core/config.php", "sys_config.php"],
         "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
     }
 }
