@@ -43,11 +43,11 @@ class SuperGroupsController extends BaseController{
 
   public function select(Request $request, Response $response, array $args)
   {//print_r($request);
-      try{
+      try{echo 'yesssss';
           //$params= $request->getParsedBody();
 
           $this->obj->validateParams($args);print_r($args);
-          $objArray = $this->obj->GetInfoP($args['id']);
+          $objArray = $this->obj->GetInfoP($args['id']);print_r($objArray);
           if($objArray) {
               return ResponseHelper::createSuccessfulResponse($response)
                   ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
