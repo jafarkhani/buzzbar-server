@@ -41,10 +41,10 @@ $container['logger'] = function ($c) {
 $container['pdo'] = function ($c) {
     $settings = $c->get('settings')['default_db'];
 
-    $_host = $settings['host'];
-    $_user = $settings['user'];
-    $_pass = $settings['pass'];
-    $_default_db = $settings['dbname'];
+    echo $_host = $settings['host'];
+    echo $_user = $settings['user'];
+    echo $_pass = $settings['pass'];
+    echo $_default_db = $settings['dbname'];
 
     $pdo = new PDO("mysql:host=" . $_host . ";dbname=" . $_default_db, $_user, $_pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     return $pdo;
