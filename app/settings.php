@@ -6,11 +6,11 @@
  * Time: 12:26 PM
  */
 echo 'show connection vars';
-echo $db_servers['master']["host"];
-        echo $db_servers['master']["profportfolio_db "];
-        echo $db_servers['master']["profportfolio_user "];
-        echo $db_servers['master']["profportfolio_pass"];
-echo 'end';
+echo '<br>host: '.config::$db_servers['master']["host"];
+        echo '<br>db: '.config::$db_servers['master']["profportfolio_db "];
+        echo '<br>user: '.config::$db_servers['master']["profportfolio_user "];
+        echo '<br>pass: '.config::$db_servers['master']["profportfolio_pass"];
+echo '<br>end';
 
 return [
     'settings' => [
