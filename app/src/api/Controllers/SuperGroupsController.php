@@ -62,7 +62,7 @@ class SuperGroupsController extends BaseController{
       }catch (\Exception $ex) {
           return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
       }
-  }
-  */
+  }*/
+  
 
 } //End of class SuperGroupsController
