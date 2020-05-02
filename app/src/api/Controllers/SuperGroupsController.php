@@ -46,12 +46,12 @@ class SuperGroupsController extends BaseController{
     //echo 'args';
     //print_r($args);//echo '<br>params';
     //$params= $request->getParsedBody();print_r($params);
-      try{echo 'yesssss';
+      try{
           //$params= $request->getParsedBody();
 
           $this->obj->validateParams($args);
-          $objArray = $this->obj->GetInfo($args['id']);echo '<br>xxxxxx';print_r($objArray);echo '<br>'.json_encode($objArray).'<br>';
-          if($objArray) {echo 'success';
+          $objArray = $this->obj->GetInfo($args['id']);//echo '<br>xxxxxx';print_r($objArray);echo '<br>'.json_encode($objArray).'<br>';
+          if($objArray) {
               return ResponseHelper::createSuccessfulResponse($response)
                   ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
                   ->write(json_encode($objArray));
