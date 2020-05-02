@@ -227,13 +227,13 @@ class BaseController
     }
 
     public function update(Request $request, Response $response, array $args)
-    {echo 'update';
-        try{echo 'xxx';
+    {//echo 'update';
+        try{//echo 'xxx';
             //$params= $request->getParsedBody();print_r($params);
             //$file = $request->getUploadedFiles();
             
             //input validation
-            $this->obj->validateParams($args);echo 'ok';
+            $this->obj->validateParams($args);//echo 'ok';
 
             /*if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
@@ -241,8 +241,8 @@ class BaseController
             }*/
 
             //setId() method does Input validation for id
-            echo $args['id']; print_r($this->obj);
-            $this->obj->setId($args['id']);echo 'okssss';
+            //echo $args['id']; print_r($this->obj);
+            //$this->obj->setId($args['id']);echo 'okssss';
             $this->obj->doUpdate($args);
 
             /*if($this->docObj && !empty($file['attachment'])) {
