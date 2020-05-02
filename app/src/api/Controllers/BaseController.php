@@ -233,7 +233,7 @@ class BaseController
             //$file = $request->getUploadedFiles();
             
             //input validation
-            $this->obj->validateParams($args);echo 'ok';print_r($this->obj);
+            $this->obj->validateParams($args);
 
             /*if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
@@ -243,6 +243,7 @@ class BaseController
             //setId() method does Input validation for id
             //echo $args['id']; print_r($this->obj);
             $this->obj->setId($args['id']);//echo 'okssss';
+            $this->obj->set('id',$args['id']);
             $this->obj->doUpdate($args);
 
             /*if($this->docObj && !empty($file['attachment'])) {
