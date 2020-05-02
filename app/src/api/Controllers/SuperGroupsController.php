@@ -25,7 +25,7 @@ class SuperGroupsController extends BaseController{
     parent::__construct($container,$SuperGroup);
   }
 
-  public function selectAll(Request $request, Response $response, array $args){echo 'ddddddddddddddd';
+  public function selectAll(Request $request, Response $response, array $args){
     try{
       //$params= $request->getQueryParams();
       $objArray = $this->obj->GetAll();
