@@ -41,11 +41,8 @@ class SuperGroupsController extends BaseController{
     }//End of try catch
   }//End of member function select*/
 
-  /*public function select(Request $request, Response $response, array $args)
-  {//print_r($request);
-    //echo 'args';
-    //print_r($args);//echo '<br>params';
-    //$params= $request->getParsedBody();print_r($params);
+  public function select(Request $request, Response $response, array $args)
+  {
       try{
           //$params= $request->getParsedBody();
 
@@ -62,7 +59,7 @@ class SuperGroupsController extends BaseController{
       }catch (\Exception $ex) {
           return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
       }
-  }*/
+  }
   
 
 } //End of class SuperGroupsController
