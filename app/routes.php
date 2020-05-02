@@ -7,8 +7,8 @@
  */
 error_reporting(1);
 ini_set("display_errors", E_ALL);
-//use Api\Controllers\SuperGroupsController;
-//use Api\Controllers\GroupsController;
+use Api\Controllers\SuperGroupsController;
+use Api\Controllers\GroupsController;
 
 // Api Routes
 
