@@ -273,7 +273,7 @@ class BaseClass extends EntityClass{
                         if (!InputValidation::validate($params[$property], $specification['DataType'])) {echo ' ok9 ';
                             //throw new \Exception("Input validation failed for ".$property."--".$specification['DataType']);
                             throw new \Exception("فرمت داده ورودی ".InputValidation::htmlEncode($params[$property]).'--'.$property."--".$specification['DataType'] ." صحیح نمی باشد ");echo ' ok10 ';
-                        }
+                        }echo ' ok11 ';
                     }
                 }
             } else {
