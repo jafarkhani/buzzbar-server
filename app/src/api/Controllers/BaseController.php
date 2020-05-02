@@ -188,7 +188,7 @@ class BaseController
 
             $params= $request->getParsedBody();
             //$file = $request->getUploadedFiles();
-            echo' params ;'
+            echo' params ';
             $this->obj->validateParams($params);
 echo ' validate ';
             if(isset($params['PersonID'])){
