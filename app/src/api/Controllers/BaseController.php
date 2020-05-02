@@ -25,16 +25,16 @@ class BaseController
     protected $pdo;
     protected $obj;
     protected $docObj;
-    protected $uploadDir;
+    //protected $uploadDir;
     protected $headerInfo;
 
     public function __construct(ContainerInterface $container, $obj,$doc= false)
     {
         $this->logger = $container->get('logger');
         $this->pdo = $container->get('pdo');
-        $this->uploadDir = $container->get('upload_directory');
+        //$this->uploadDir = $container->get('upload_directory');
         $this->obj = $obj;
-        $this->docObj = $doc;
+        //$this->docObj = $doc;
         $this->headerInfo = $container->get('headerInfo');
     }
 
@@ -198,7 +198,7 @@ class BaseController
             $this->obj->doInsert($params);
             $index = $this->obj->{$this->obj->getTablePk()};
 
-            if($this->docObj && !empty($file['attachment'])) {
+            /*if($this->docObj && !empty($file['attachment'])) {
                 $fileType = $file['attachment']->getClientMediaType();
 
                 $fileName = $file['attachment']->getClientFilename();
@@ -215,7 +215,7 @@ class BaseController
                 $index = $this->docObj->{$this->docObj->getTablePk()};
                 $uploadDir = $this->uploadDir.$this->obj->getTableName();
                 self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
-            }
+            }*/
 
             return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::CREATED);
 
@@ -243,7 +243,7 @@ class BaseController
             $this->obj->setId($params['id']);
             $this->obj->doUpdate($params);
 
-            if($this->docObj && !empty($file['attachment'])) {
+            /*if($this->docObj && !empty($file['attachment'])) {
 
                 $fileType = $file['attachment']->getClientMediaType();
 
@@ -261,7 +261,7 @@ class BaseController
                 $index = $this->docObj->{$this->docObj->getTablePk()};
                 $uploadDir = $this->uploadDir.$this->obj->getTableName();
                 self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
-            }
+            }*/
 
             return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
         }
