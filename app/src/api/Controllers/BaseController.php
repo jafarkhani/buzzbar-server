@@ -241,7 +241,7 @@ class BaseController
             }*/
 
             //setId() method does Input validation for id
-            echo $args['id']; print_r($obj);
+            echo $args['id']; print_r($this->obj);
             $this->obj->setId($args['id']);echo 'okssss';
             $this->obj->doUpdate($args);
 
