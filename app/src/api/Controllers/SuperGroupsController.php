@@ -42,7 +42,7 @@ class SuperGroupsController extends BaseController{
   }//End of member function select*/
 
   public function select(Request $request, Response $response, array $args)
-  {//print_r($request);
+  {print_r($request);
       try{
           //$params= $request->getParsedBody();
 
