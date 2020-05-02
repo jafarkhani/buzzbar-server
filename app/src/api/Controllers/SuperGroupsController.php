@@ -25,7 +25,7 @@ class SuperGroupsController extends BaseController{
     parent::__construct($container,$SuperGroup);
   }
 
-  public function selectAll(Request $request, Response $response, array $args){
+  /*public function selectAll(Request $request, Response $response, array $args){
     try{
       //$params= $request->getQueryParams();
       $objArray = $this->obj->GetAll();
@@ -39,7 +39,7 @@ class SuperGroupsController extends BaseController{
     }catch (\Exception $ex) {
       return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
     }//End of try catch
-  }//End of member function select
+  }//End of member function select*/
 
   public function select(Request $request, Response $response, array $args)
   {//print_r($request);

@@ -113,7 +113,7 @@ class BaseController
             $this->obj->validateParams($params);
 
 
-            $PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
+            /*$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
             $co = $this->obj->getAllCount("PersonID = :PersonID" ,array(":PersonID"=>$PersonID));
 
             if($co>0){
@@ -147,7 +147,8 @@ class BaseController
                     "iTotalDisplayRecords" => 0,
                     "aaData" => array() //array of data fetched from db
                 );
-            }
+            }*/
+            $data = $this->obj->GetAll();
             if($data) {
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
