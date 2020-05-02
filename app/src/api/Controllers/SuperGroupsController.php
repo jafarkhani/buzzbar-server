@@ -42,11 +42,11 @@ class SuperGroupsController extends BaseController{
   }//End of member function select*/
 
   public function select(Request $request, Response $response, array $args)
-  {print_r($request);
+  {//print_r($request);
       try{
           //$params= $request->getParsedBody();
 
-          $this->obj->validateParams($args);
+          $this->obj->validateParams($args);print_r($args);
           $objArray = $this->obj->GetInfoP($args['id']);
           if($objArray) {
               return ResponseHelper::createSuccessfulResponse($response)
