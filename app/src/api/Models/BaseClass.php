@@ -310,7 +310,7 @@ class BaseClass extends EntityClass{
 
     }
 
-    public function existId(){
+    public function existId(){print_r($this);
 
         if($this->id()!== null){echo "SELECT * FROM ".self::getTableName()
                 ." WHERE ".self::getTablePk()." = :id";echo $this->id();
@@ -371,7 +371,7 @@ class BaseClass extends EntityClass{
      * @throws \Exception
      */
     public function doUpdate($args = array())
-    {
+    {print_r($this);
         if (!$this->existId()) {
             //ExceptionHandler::ThrowException(self::ERR_Edit);
             //return false;
