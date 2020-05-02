@@ -13,10 +13,7 @@ use Api\Controllers\GroupsController;
 // Api Routes
 
 $app->group('/profportfolio/api/v1', function () {
-	$app->get('/supergroups/select', function ($request, $response, $args) {
-    //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write(" Super Groups Select***** " );
-});
+	
     //$this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
     $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
