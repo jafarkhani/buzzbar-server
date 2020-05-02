@@ -267,12 +267,12 @@ class BaseClass extends EntityClass{
             $obj= new $class();
             $properties = get_object_vars($obj);echo ' ok5 ';
             // Check for invalid query parameters
-            if ($properties) {
-                foreach ($properties as $property => $specification) {
-                    if (array_key_exists($property, $params)) {
-                        if (!InputValidation::validate($params[$property], $specification['DataType'])) {
+            if ($properties) {echo ' ok6 ';
+                foreach ($properties as $property => $specification) {echo ' ok7 ';
+                    if (array_key_exists($property, $params)) {echo ' ok8 ';
+                        if (!InputValidation::validate($params[$property], $specification['DataType'])) {echo ' ok9 ';
                             //throw new \Exception("Input validation failed for ".$property."--".$specification['DataType']);
-                            throw new \Exception("فرمت داده ورودی ".InputValidation::htmlEncode($params[$property]).'--'.$property."--".$specification['DataType'] ." صحیح نمی باشد ");
+                            throw new \Exception("فرمت داده ورودی ".InputValidation::htmlEncode($params[$property]).'--'.$property."--".$specification['DataType'] ." صحیح نمی باشد ");echo ' ok10 ';
                         }
                     }
                 }
