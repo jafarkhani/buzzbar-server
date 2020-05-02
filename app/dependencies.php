@@ -39,7 +39,7 @@ $container['logger'] = function ($c) {
 */
 
 $container['pdo'] = function ($c) {
-    $settings = $c->get('settings')['default_db'];
+    $settings = $c->get('settings')['default_db'];echo 'zzzzzz';print_r($settings);echo 'ccccc';
 
     echo $_host = $settings['host'];
     echo $_user = $settings['user'];
