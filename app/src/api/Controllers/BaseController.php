@@ -187,17 +187,17 @@ class BaseController
         try{
 
             $params= $request->getParsedBody();
-            $file = $request->getUploadedFiles();
+            //$file = $request->getUploadedFiles();
 
             $this->obj->validateParams($params);
 
             if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
-            }
+            }echo 'yyy';
 
             $this->obj->doInsert($params);
-            $index = $this->obj->{$this->obj->getTablePk()};
+            $index = $this->obj->{$this->obj->getTablePk()};echo 'bbbb';
 
             /*if($this->docObj && !empty($file['attachment'])) {
                 $fileType = $file['attachment']->getClientMediaType();
