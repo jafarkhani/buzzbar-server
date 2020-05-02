@@ -184,13 +184,13 @@ class BaseController
 
     public function insert(Request $request, Response $response, array $args)
     {echo 'mmmmm';
-        try{
+        try{echo'try ';
 
             $params= $request->getParsedBody();
             //$file = $request->getUploadedFiles();
-
+            echo' params ;'
             $this->obj->validateParams($params);
-
+echo ' validate ';
             if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
