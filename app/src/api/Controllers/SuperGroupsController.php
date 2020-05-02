@@ -41,7 +41,7 @@ class SuperGroupsController extends BaseController{
     }//End of try catch
   }//End of member function select*/
 
-  public function select(Request $request, Response $response, array $args)
+  /*public function select(Request $request, Response $response, array $args)
   {//print_r($request);
     //echo 'args';
     //print_r($args);//echo '<br>params';
@@ -63,6 +63,6 @@ class SuperGroupsController extends BaseController{
           return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
       }
   }
-  
+  */
 
 } //End of class SuperGroupsController
