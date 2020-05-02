@@ -25,17 +25,17 @@ class BaseClass extends EntityClass{
 
 
   public static function getDBConnection(){
-    return pdodb::getInstance(config::$db_servers['master']['host'],config::$db_servers['master']['tpf_user']
-      ,config::$db_servers['master']['tpf_pass'],'educ'/*EducDB::DB_NAME*/);
+    return pdodb::getInstance(config::$db_servers['master']['host'],config::$db_servers['master']['profportfolio_user']
+      ,config::$db_servers['master']['profportfolio_pass'],config::$db_servers['master']["profportfolio_db"]/*EducDB::DB_NAME*/);
   } // end of member function getDBConnection
 
   public static function getReportDBConnection(){
     if(config::$connect_status == config::NORMAL_CONNECTION)
       return pdodb::getInstance(config::$db_servers['slave']['host'],config::$db_servers['slave']['report_user']
-        ,config::$db_servers['slave']['report_pass'],'educ'/*EducDB::DB_NAME*/);
+        ,config::$db_servers['slave']['report_pass'],config::$db_servers['master']["profportfolio_db"]/*EducDB::DB_NAME*/);
     else
-      return pdodb::getInstance(config::$db_servers['master']['host'],config::$db_servers['master']['tpf_user']
-        ,config::$db_servers['master']['tpf_pass'],'educ'/*EducDB::DB_NAME*/);
+      return pdodb::getInstance(config::$db_servers['master']['host'],config::$db_servers['master']['profportfolio_user']
+        ,config::$db_servers['master']['profportfolio_pass'],config::$db_servers['master']["profportfolio_db"]/*EducDB::DB_NAME*/);
   } // end of member function getDBConnection
 
     public function getDomains(){
