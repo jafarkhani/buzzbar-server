@@ -11,24 +11,24 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use pdodb;
 use ResponseHelper;
 use config;
-use Api\Models\FormTypes;
+use Api\Models\Items;
 
 
-class FormTypesController{
+class ItemsController{
 
     protected $container;
-    protected $FormTypes;
+    protected $Items;
 
-    public function __construct(ContainerInterface $container, FormTypes $FormTypes){
+    public function __construct(ContainerInterface $container, Items $Items){
         $this->container = $container;
-        $this->FormTypes = $FormTypes;
+        $this->Items = $Items;
     }
 
     public function select(Request $request, Response $response, array $args){
         try{
             $params= $request->getParsedBody();
-            echo $params['FormType'];
-            $objArray = $this->FormTypes->GetAll($params['FormType']);
+            echo $params['ItemID'];
+            $objArray = $this->Items->GetAll($params['ItemID']);
             if($objArray) {
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
@@ -41,4 +41,4 @@ class FormTypesController{
         }//End of try catch
     }//End of member function select
 
-} //End of class FormTypesController
+} //End of class ItemsController

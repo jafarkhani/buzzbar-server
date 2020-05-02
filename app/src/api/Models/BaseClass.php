@@ -236,7 +236,7 @@ class BaseClass extends EntityClass{
 
     public static function validateParams(&$args)
     {
-        $params = null;echo 'ok';
+        $params = null;
         if ($args && !is_array($args)) {
 
             $tmp = explode('/', $args);
@@ -253,8 +253,8 @@ class BaseClass extends EntityClass{
         }else{
             $params = $args;
         }
-        echo ' ok2 ';
-        if ($params) {echo ' ok3 ';
+        
+        if ($params) {
             // remove empty elements
             array_filter($params,function($value) { return $value !== ''; });
 
@@ -262,18 +262,18 @@ class BaseClass extends EntityClass{
                 $params[self::getTablePk()]=$params['id'];
                 unset($params['id']);
             }
-            echo ' ok4 ';
+            
             $class= get_called_class();
             $obj= new $class();
-            $properties = get_object_vars($obj);echo ' ok5 ';
+            $properties = get_object_vars($obj);
             // Check for invalid query parameters
-            if ($properties) {echo ' ok6 ';
-                foreach ($properties as $property => $specification) {echo ' ok7 ';
-                    if (array_key_exists($property, $params)) {echo ' ok8 '.$property.' - '.print_r($specificationush);
-                        if (!InputValidation::validate($params[$property], $specification['DataType'])) {echo ' ok9 ';
+            if ($properties) {
+                foreach ($properties as $property => $specification) {
+                    if (array_key_exists($property, $params)) {
+                        if (!InputValidation::validate($params[$property], $specification['DataType'])) {
                             //throw new \Exception("Input validation failed for ".$property."--".$specification['DataType']);
-                            throw new \Exception("فرمت داده ورودی ".InputValidation::htmlEncode($params[$property]).'--'.$property."--".$specification['DataType'] ." صحیح نمی باشد ");echo ' ok10 ';
-                        }echo ' ok11 ';
+                            throw new \Exception("فرمت داده ورودی ".InputValidation::htmlEncode($params[$property]).'--'.$property."--".$specification['DataType'] ." صحیح نمی باشد ");
+                        }
                     }
                 }
             } else {
@@ -334,10 +334,10 @@ class BaseClass extends EntityClass{
             $properties = array_filter(get_object_vars($obj));
 
             // check if obj is not empty
-            if(!empty($properties)) {echo ' not empty ';
+            if(!empty($properties)) {
                 // run before inserts
-                $this->preInsert();echo ' pre ';echo self::getTableName();print_r($obj);
-                $res = parent::insert(self::getTableName(), $obj);echo ' INSERT ';
+                $this->preInsert();
+                $res = parent::insert(self::getTableName(), $obj);
                 if ($res === false) {
                     //ExceptionHandler::ThrowException(self::ERR_Add);
                     //return false;

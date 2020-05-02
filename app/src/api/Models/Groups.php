@@ -19,8 +19,8 @@ class Groups extends BaseClass {
 
     public $GroupID;
     public $SuperGroupID;
-    public $GroupPName;
-    public $GroupEName;
+    public $GroupPTitle;
+    public $GroupETitle;
     public $GroupOrder;
     public $LogID;
     public $RecordStatus;
@@ -29,8 +29,8 @@ class Groups extends BaseClass {
 
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->GroupPName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->GroupEName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->GroupPTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->GroupETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->GroupOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->RecordStatus = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
@@ -39,9 +39,9 @@ class Groups extends BaseClass {
     }
     public function GetAll($SuperGroupID){
         $mysql = parent::getReportDBConnection();
-        echo $query = "SELECT * FROM groups where RecordStatus<>'DELETED' and SuperGroupID=:SuperGroupID order by GroupOrder";
+        echo $query = "SELECT * FROM groups where RecordStatus<>'DELETED'  order by GroupOrder";
         $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement(array(":SuperGroupID"=>$SuperGroupID));
+        $objArray = $mysql->ExecuteStatement(array());
         $objArray = $objArray->fetchAll();print_r($objArray);
         InputValidation::ArrayEncoding($objArray);
         return $objArray;

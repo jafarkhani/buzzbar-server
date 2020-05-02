@@ -14,35 +14,31 @@ use InputValidation;
 class FormTypes extends BaseClass {
 
     const TableName = "FormTypes";
-    const TableKey = "FormTypeID";
-    const ClassDesc = "گروه آیتم های کارنما";
+    const TableKey = "FormType";
+    const ClassDesc = "نوع های فرم";
 
-    public $FormTypeID;
-    public $SuperFormTypeID;
-    public $FormTypePName;
-    public $FormTypeEName;
-    public $FormTypeOrder;
+    public $FormType;
+    public $FormTypePTitle;
+    public $FormTypeETitle;
     public $LogID;
     public $RecordStatus;
 
     public function __construct($headerInfo = array(), $id =null){
 
-        $this->FormTypeID= DataMember::CreateDMA(DataMember::Pattern_Num);
-        $this->SuperFormTypeID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->FormTypePName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->FormTypeEName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->FormTypeOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
+        $this->FormType= DataMember::CreateDMA(DataMember::Pattern_Num);
+        $this->FormTypePTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->FormTypeETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->RecordStatus = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         parent::__construct($headerInfo,$id);
 
     }
-    public function GetAll($SuperFormTypeID){
+    public function GetAll($SuperFormType){
         $mysql = parent::getReportDBConnection();
-        echo $query = "SELECT * FROM FormTypes where RecordStatus<>'DELETED' and SuperFormTypeID=:SuperFormTypeID order by FormTypeOrder";
+        echo $query = "SELECT * FROM FormTypes where RecordStatus<>'DELETED' order by FormTypeOrder";
         $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement(array(":SuperFormTypeID"=>$SuperFormTypeID));
-        $objArray = $objArray->fetchAll();print_r($objArray);
+        $objArray = $mysql->ExecuteStatement(array());
+        $objArray = $objArray->fetchAll();
         InputValidation::ArrayEncoding($objArray);
         return $objArray;
     }
