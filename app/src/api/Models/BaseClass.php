@@ -334,10 +334,10 @@ class BaseClass extends EntityClass{
             $properties = array_filter(get_object_vars($obj));
 
             // check if obj is not empty
-            if(!empty($properties)) {
+            if(!empty($properties)) {echo ' not empty ';
                 // run before inserts
                 $this->preInsert();
-                $res = parent::insert(self::getTableName(), $obj);
+                $res = parent::insert(self::getTableName(), $obj);echo ' INSERT ';
                 if ($res === false) {
                     //ExceptionHandler::ThrowException(self::ERR_Add);
                     //return false;
