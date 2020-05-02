@@ -371,7 +371,7 @@ class BaseClass extends EntityClass{
      * @throws \Exception
      */
     public function doUpdate($args = array())
-    {echo 'hhhhhh';echo $args['id'];echo $this->id();
+    {echo 'hhhhhh';echo $args['id'];echo 'iiiiii'.$this->id().'oooo';
         if (!$this->existId()) {
             //ExceptionHandler::ThrowException(self::ERR_Edit);
             //return false;
