@@ -7,8 +7,8 @@
  */
 echo 'show connection vars';
 echo '<br>host: '.config::$db_servers['master']["host"];
-        echo '<br>db: '.config::$db_servers['master']["profportfolio_db "];
-        echo '<br>user: '.config::$db_servers['master']["profportfolio_user "];
+        echo '<br>db: '.config::$db_servers['master']["profportfolio_db"];
+        echo '<br>user: '.config::$db_servers['master']["profportfolio_user"];
         echo '<br>pass: '.config::$db_servers['master']["profportfolio_pass"];
 echo '<br>end';
 
@@ -29,8 +29,8 @@ return [
 
         "default_db" => [
             "host" => config::$db_servers['master']["host"],
-            "dbname" => config::$db_servers['master']["profportfolio_db "],
-            "user" => config::$db_servers['master']["profportfolio_user "],
+            "dbname" => config::$db_servers['master']["profportfolio_db"],
+            "user" => config::$db_servers['master']["profportfolio_user"],
             "pass" => config::$db_servers['master']["profportfolio_pass"]
         ]
     ],
