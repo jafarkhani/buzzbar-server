@@ -246,20 +246,10 @@ class BaseController
     }
 
 
-    public function setId($newValue){echo 'new-value '.$newValue;
-        if (InputValidation::validate($newValue,InputValidation::Pattern_EnAlphaNum, false)){
-           $this->{self::getTablePk()}= $newValue;
-           return true;
-        }
-        else{
-            throw new \Exception("Input validation failed for Id");
-        }
-    }
-
     public function update(Request $request, Response $response, array $args)
     {
         try{
-            $params= $request->getParsedBody();print_r($params);
+            $params= $request->getParsedBody();
             $file = $request->getUploadedFiles();
 
             //input validation
@@ -269,9 +259,9 @@ class BaseController
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
             }
-            echo 'ddddd'.$params['id'];
+            
             //setId() method does Input validation for id
-            $this->obj->setId($params['id']);echo 'bbbbb';print_r($this->obj);
+            $this->obj->setId($params['id']);
             $this->obj->doUpdate($params);
 
             /*if($this->docObj && !empty($file['attachment'])) {

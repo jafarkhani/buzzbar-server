@@ -310,7 +310,7 @@ class BaseClass extends EntityClass{
 
     }
 
-    public function setId($newValue){echo 'new-value '.$newValue;
+    public function setId($newValue){
         if (InputValidation::validate($newValue,InputValidation::Pattern_EnAlphaNum, false)){
            $this->{self::getTablePk()}= $newValue;
            return true;
@@ -320,7 +320,7 @@ class BaseClass extends EntityClass{
         }
     }
 
-    public function existId(){echo 'ffffff'.$this->id();print_r($this->id());
+    public function existId(){
 
         if($this->id()!== null){
             $result = parent::runquery("SELECT * FROM ".self::getTableName()
@@ -380,7 +380,7 @@ class BaseClass extends EntityClass{
      * @throws \Exception
      */
     public function doUpdate($args = array())
-    {echo 'eeee';echo $this->id();print_r($this->id());
+    {
         if (!$this->existId()) {
             //ExceptionHandler::ThrowException(self::ERR_Edit);
             //return false;
