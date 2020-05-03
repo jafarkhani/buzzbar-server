@@ -310,6 +310,16 @@ class BaseClass extends EntityClass{
 
     }
 
+    public function setId($newValue){echo 'new-value '.$newValue;
+        if (InputValidation::validate($newValue,InputValidation::Pattern_EnAlphaNum, false)){
+           $this->{self::getTablePk()}= $newValue;
+           return true;
+        }
+        else{
+            throw new \Exception("Input validation failed for Id");
+        }
+    }
+
     public function existId(){echo 'ffffff'.$this->id();print_r($this->id());
 
         if($this->id()!== null){
