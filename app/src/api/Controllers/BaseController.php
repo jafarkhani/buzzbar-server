@@ -241,7 +241,7 @@ class BaseController
             }
 
             //setId() method does Input validation for id
-            $this->obj->setId($params['id']);
+            $this->obj->setId($params['id']);print_r($this->obj);
             $this->obj->doUpdate($params);
 
             /*if($this->docObj && !empty($file['attachment'])) {
