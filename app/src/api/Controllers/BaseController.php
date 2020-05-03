@@ -227,24 +227,22 @@ class BaseController
     }
 
     public function update(Request $request, Response $response, array $args)
-    {//echo 'update';
-        try{//echo 'xxx';
-            //$params= $request->getParsedBody();print_r($params);
-            //$file = $request->getUploadedFiles();
-            
-            //input validation
-            $this->obj->validateParams($args);
+    {
+        try{
+            $params= $request->getParsedBody();
+            $file = $request->getUploadedFiles();
 
-            /*if(isset($params['PersonID'])){
+            //input validation
+            $this->obj->validateParams($params);
+
+            if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
-            }*/
+            }
 
             //setId() method does Input validation for id
-            //echo $args['id']; print_r($this->obj);
-            $this->obj->setId($args['id']);//echo 'okssss';
-            $this->obj->set('id',$args['id']);
-            $this->obj->doUpdate($args);
+            $this->obj->setId($params['id']);
+            $this->obj->doUpdate($params);
 
             /*if($this->docObj && !empty($file['attachment'])) {
 
