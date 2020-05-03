@@ -162,7 +162,7 @@ class BaseController
         }
     }
 
-    public function select(Request $request, Response $response, array $args)
+    /*public function select(Request $request, Response $response, array $args)
     {
         try{
             $params= $request->getParsedBody();
@@ -180,7 +180,26 @@ class BaseController
         }catch (\Exception $ex) {
             return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
         }
-    }
+    }*/
+         public function select(Request $request, Response $response, array $args)
+      {
+          try{
+              //$params= $request->getParsedBody();
+
+              $this->obj->validateParams($args);
+              $objArray = $this->obj->GetInfo($args['id']);//echo '<br>xxxxxx';print_r($objArray);echo '<br>'.json_encode($objArray).'<br>';
+              if($objArray) {
+                  return ResponseHelper::createSuccessfulResponse($response)
+                      ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
+                      ->write(json_encode($objArray));
+              }
+              else {
+                  return ResponseHelper::createfailureResponse($response, \HTTPStatusCodes::NO_CONTENT);
+              }
+          }catch (\Exception $ex) {
+              return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
+          }
+      }
 
     public function insert(Request $request, Response $response, array $args)
     {

@@ -29,9 +29,9 @@ class SuperGroupsController extends BaseController{
     try{
       //$params= $request->getQueryParams();
       $objArray = $this->obj->GetAll();
-      if($objArray) {
-        return ResponseHelper::createSuccessfulResponse($response)
-          ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
+      if($objArray) { 
+        return ResponseHeloper::createSuccessfulResponse($response)
+          ->withHeader('Cntent-Type', 'application/json', JSON_UNESCAPED_UNICODE)
             ->write(json_encode($objArray));
       }else{
         return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::NO_CONTENT);
@@ -41,7 +41,7 @@ class SuperGroupsController extends BaseController{
     }//End of try catch
   }//End of member function select*/
 
-  public function select(Request $request, Response $response, array $args)
+  /*public function select(Request $request, Response $response, array $args)
   {
       try{
           //$params= $request->getParsedBody();
@@ -59,7 +59,7 @@ class SuperGroupsController extends BaseController{
       }catch (\Exception $ex) {
           return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());//ErrorList::INVALID_QUERY_PARAMETER);
       }
-  }
+  }*/
   
 
 } //End of class SuperGroupsController
