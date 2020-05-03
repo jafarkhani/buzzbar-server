@@ -18,7 +18,7 @@ $app->group('/profportfolio/api/v1', function () {
     $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
     $this->post('/supergroups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
-    $this->put('/supergroups/update/{id}', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
+    $this->post('/supergroups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
     $this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
 
     $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
