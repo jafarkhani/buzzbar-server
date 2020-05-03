@@ -248,8 +248,8 @@ class BaseController
 
     public function update(Request $request, Response $response, array $args)
     {
-        try{print_r($args);print_r($params);
-            $params= $request->getParsedBody();
+        try{print_r($args);
+            $params= $request->getParsedBody();print_r($params);
             //$file = $request->getUploadedFiles();
 
             //input validation
