@@ -293,8 +293,8 @@ class BaseController
 
 
     public function delete(Request $request, Response $response, array $args)
-    {
-        $id = $args['id'];
+    {echo '<br>delete<br>';
+        echo $id = $args['id'];
         try{
             $this->obj->setId($id);
             $this->obj->doDelete();
