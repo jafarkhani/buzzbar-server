@@ -248,12 +248,12 @@ class BaseController
 
     public function update(Request $request, Response $response, array $args)
     {
-        try{
+        try{print_r($args);
             //$params= $request->getParsedBody();
             //$file = $request->getUploadedFiles();
 
             //input validation
-            $this->obj->validateParams($args);
+            $this->obj->validateParams($args);//print_r($this->obj);
 
             /*if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
