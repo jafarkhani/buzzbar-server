@@ -19,12 +19,15 @@ $app->group('/profportfolio/api/v1', function () {
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
     $this->post('/supergroups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
     $this->post('/supergroups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
-    $this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
+    //$this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
 
     $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
 });
 
-
+$app->delete('/supergroups/delete/{id}', function ($request, $response, $args) {
+    //echo $_SERVER['DOCUMENT_ROOT'];
+        return $response->write("delete 1234***** " );
+});
 
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
