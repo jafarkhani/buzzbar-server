@@ -61,48 +61,5 @@ class SuperGroupsController extends BaseController{
       }
   }*/
   
-public function update(Request $request, Response $response, array $args) {
-  echo 'vvvvvvvvvvvvvvvv';
-  try{echo '<br>args : ';print_r($args);
-            $params= $request->getParsedBody();echo '<br>paramsss : ';print_r($params);
-            //$file = $request->getUploadedFiles();
 
-            //input validation
-            $this->obj->validateParams($params);
-
-            /*if(isset($params['PersonID'])){
-                if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
-                    throw new \Exception('دسترسی غیر مجاز');
-            }*/
-            
-            //setId() method does Input validation for id
-            $this->obj->setId($args['id']);
-            $this->obj->doUpdate($params);
-
-            /*if($this->docObj && !empty($file['attachment'])) {
-
-                $fileType = $file['attachment']->getClientMediaType();
-
-                $fileName = $file['attachment']->getClientFilename();
-                $fileEx = substr($fileName,strrpos($fileName,'.')+1, strlen($fileName));
-
-                $pa = array(
-                    "TargetTable" => $this->obj->getTableName(),
-                    "TargetID" => $params['id'],
-                    "path" => $this->uploadDir,
-                    "FileName" => $fileEx,
-                    "FileType" => $fileType
-                );
-                $this->docObj->doInsert($pa);
-                $index = $this->docObj->{$this->docObj->getTablePk()};
-                $uploadDir = $this->uploadDir.$this->obj->getTableName();
-                self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
-            }*/
-
-            return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
-        }
-        catch (\Exception $ex) {
-            return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
-        }
-}
 } //End of class SuperGroupsController
