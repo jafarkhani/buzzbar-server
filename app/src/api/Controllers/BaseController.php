@@ -245,6 +245,17 @@ class BaseController
         }
     }
 
+
+    public function setId($newValue){echo 'new-value '.$newValue;
+        if (InputValidation::validate($newValue,InputValidation::Pattern_ENAlphaNum, false)){
+           $this->{self::getTablePk()}= $newValue;
+           return true;
+        }
+        else{
+            throw new \Exception("Input validation failed for Id");
+        }
+    }
+
     public function update(Request $request, Response $response, array $args)
     {
         try{
@@ -258,7 +269,7 @@ class BaseController
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
             }
-            echo 'ddddd';
+            echo 'ddddd'.$params['id'];
             //setId() method does Input validation for id
             $this->obj->setId($params['id']);echo 'bbbbb';print_r($this->obj);
             $this->obj->doUpdate($params);
