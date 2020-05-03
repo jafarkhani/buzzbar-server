@@ -239,9 +239,9 @@ class BaseController
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
             }
-
+            echo 'ddddd';
             //setId() method does Input validation for id
-            $this->obj->setId($params['id']);print_r($this->obj);
+            $this->obj->setId($params['id']);echo 'bbbbb';print_r($this->obj);
             $this->obj->doUpdate($params);
 
             /*if($this->docObj && !empty($file['attachment'])) {
