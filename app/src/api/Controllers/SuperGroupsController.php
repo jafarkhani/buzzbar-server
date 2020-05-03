@@ -61,5 +61,7 @@ class SuperGroupsController extends BaseController{
       }
   }*/
   
-
+public function update(Request $request, Response $response, array $args) {
+  echo 'vvvvvvvvvvvvvvvv';
+}
 } //End of class SuperGroupsController
