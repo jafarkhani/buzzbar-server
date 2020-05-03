@@ -24,7 +24,7 @@ $app->group('/profportfolio/api/v1', function () {
     $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
 });
 
-$app->delete('/supergroups/delete/{id}', function ($request, $response, $args) {
+$app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
         return $response->write("delete 1234***** " );
 });
