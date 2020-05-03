@@ -61,5 +61,18 @@ class SuperGroupsController extends BaseController{
       }
   }*/
   
+  public function delete(Request $request, Response $response, array $args)
+    {echo '<br>delete<br>';
+        echo $id = $args['id'];
+        try{
+            $this->obj->setId($id);
+            $this->obj->doDelete();
+
+            return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
+
+        }catch (\Exception $ex){
+            return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
+        }
+    }
 
 } //End of class SuperGroupsController
