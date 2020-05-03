@@ -247,7 +247,7 @@ class BaseController
 
 
     public function update(Request $request, Response $response, array $args)
-    {
+    {echo 'ttttt';
         try{echo '<br>args : ';print_r($args);
             $params= $request->getParsedBody();echo '<br>paramsss : ';print_r($params);
             //$file = $request->getUploadedFiles();
