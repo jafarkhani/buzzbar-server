@@ -26,13 +26,13 @@ $app->group('/profportfolio/api/v1', function () {
 
 $app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write("delete 1234***** " );
+        return $response->write("delete 1234***** ".$args['id']);
 });
 
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write("Hello 1234***** ".$args['id']);
+        return $response->write("Hello 1234***** ");
 });
 $app->get('/super', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
