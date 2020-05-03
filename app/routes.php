@@ -32,7 +32,7 @@ $app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request
 // Define app routes
 $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write("Hello 1234***** " );
+        return $response->write("Hello 1234***** ".$args['id']);
 });
 $app->get('/super', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
