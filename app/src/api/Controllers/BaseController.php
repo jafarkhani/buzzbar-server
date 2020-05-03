@@ -247,7 +247,7 @@ class BaseController
 
 
     public function setId($newValue){echo 'new-value '.$newValue;
-        if (InputValidation::validate($newValue,InputValidation::Pattern_ENAlphaNum, false)){
+        if (InputValidation::validate($newValue,InputValidation::Pattern_EnAlphaNum, false)){
            $this->{self::getTablePk()}= $newValue;
            return true;
         }
