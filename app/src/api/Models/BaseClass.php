@@ -149,7 +149,7 @@ class BaseClass extends EntityClass{
 
   }
 
-    public function getAll($wh='',$pa=array(),$order='',$start='',$count=''){
+    public function getAll($wh='',$pa=array(),$order='',$start='',$count=''){echo ' yes ';
         $mysql = self::getDBConnection();
 
         $domains = $this->getStatic('domains');
@@ -161,7 +161,7 @@ class BaseClass extends EntityClass{
         }
         $extJoin = '';
         $FK = $this->getStatic('FK');
-        if(count($FK)){
+        if(count($FK)){echo ' fk ';
             foreach ($FK as $key=>$value){
                 switch ($key){
                     case 'StNo':
@@ -212,7 +212,7 @@ class BaseClass extends EntityClass{
             $query .= " order by $order ";
         if($start!=='' and $count!==''){
             $query .= " limit ".(int)$start." , ".(int)$count;
-        }
+        }echo $query;
         $mysql->Prepare($query);
         $objArray = $mysql->ExecuteStatement($pa);
 
