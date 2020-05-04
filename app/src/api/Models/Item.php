@@ -50,7 +50,7 @@ class Item extends BaseClass {
         $this->ItemID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->FormType= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->ItemPTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->ItemPTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->ItemETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->StandardValue= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->ScoreUnit= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
