@@ -16,6 +16,8 @@ class Groups extends BaseClass {
     const TableName = "groups";
     const TableKey = "GroupID";
     const ClassDesc = "گروه آیتم های کارنما";
+    static $domains = [];
+    static $FK = [];
 
     public $GroupID;
     public $SuperGroupID;
@@ -25,6 +27,15 @@ class Groups extends BaseClass {
     public $LogID;
     public $RecordStatus;
 
+    public function getStatic($name){
+        return self::$$name;
+    }
+
+    /** 
+     * Group constructor.
+     * @param array $headerInfo
+     * @param null $id
+     */
     public function __construct($headerInfo = array(), $id =null){
 
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
@@ -37,13 +48,5 @@ class Groups extends BaseClass {
         parent::__construct($headerInfo,$id);
 
     }
-    public function GetAll($SuperGroupID){
-        $mysql = parent::getReportDBConnection();
-        echo $query = "SELECT * FROM groups where RecordStatus<>'DELETED'  order by GroupOrder";
-        $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement(array());
-        $objArray = $objArray->fetchAll();print_r($objArray);
-        InputValidation::ArrayEncoding($objArray);
-        return $objArray;
-    }
+    
 }//End of class Groups

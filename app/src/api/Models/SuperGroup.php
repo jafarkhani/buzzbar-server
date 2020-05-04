@@ -16,7 +16,7 @@ use InputValidation;
 class SuperGroup extends BaseClass {
 
     const TableName = "SuperGroups";
-    const TableKey = "SuperGroupID";
+    const TableKey = "RecID";
     const ClassDesc = "سرگروه آیتم های کارنمای جامع";
     static $domains = [];
     static $FK = [];
@@ -25,6 +25,7 @@ class SuperGroup extends BaseClass {
     const SuperGroupETitle = "عنوان لاتین کارنمای جامع";
     const SuperGroupOrder = "ترتیب نمایش";
 
+    public $RecID;
     public $SuperGroupID;
     public $SuperGroupPTitle;
     public $SuperGroupETitle;
@@ -43,6 +44,7 @@ class SuperGroup extends BaseClass {
      */
     public function __construct($headerInfo = array(), $id =null)
     {
+        $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->SuperGroupPTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->SuperGroupETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);

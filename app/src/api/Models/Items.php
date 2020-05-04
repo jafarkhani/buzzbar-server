@@ -16,6 +16,8 @@ class Items extends BaseClass {
     const TableName = "Items";
     const TableKey = "ItemID";
     const ClassDesc = "شاخص های فرم کارنما";
+    static $domains = [];
+    static $FK = [];
 
     public $ItemID;
     public $FormType;
@@ -34,6 +36,15 @@ class Items extends BaseClass {
     public $RecordStatus;
     public $ItemDescription;
     
+    public function getStatic($name){
+        return self::$$name;
+    }
+
+    /** 
+     * Item constructor.
+     * @param array $headerInfo
+     * @param null $id
+     */
     public function __construct($headerInfo = array(), $id =null){
 
         $this->ItemID= DataMember::CreateDMA(DataMember::Pattern_Num);
@@ -55,13 +66,5 @@ class Items extends BaseClass {
         parent::__construct($headerInfo,$id);
 
     }
-    public function GetAll($GroupID){
-        $mysql = parent::getReportDBConnection();
-        echo $query = "SELECT * FROM Items where RecordStatus<>'DELETED' order by ItemOrder";
-        $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement(array());
-        $objArray = $objArray->fetchAll();print_r($objArray);
-        InputValidation::ArrayEncoding($objArray);
-        return $objArray;
-    }
+    
 }//End of class Items

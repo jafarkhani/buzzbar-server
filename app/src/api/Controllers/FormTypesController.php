@@ -24,21 +24,4 @@ class FormTypesController{
         $this->FormTypes = $FormTypes;
     }
 
-    public function select(Request $request, Response $response, array $args){
-        try{
-            $params= $request->getParsedBody();
-            echo $params['FormType'];
-            $objArray = $this->FormTypes->GetAll($params['FormType']);
-            if($objArray) {
-                return ResponseHelper::createSuccessfulResponse($response)
-                    ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
-                    ->write(json_encode($objArray));
-            }else{
-                return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::NO_CONTENT);
-            }
-        }catch (\Exception $ex) {
-            return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
-        }//End of try catch
-    }//End of member function select
-
 } //End of class FormTypesController

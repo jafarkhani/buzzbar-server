@@ -16,6 +16,8 @@ class FormTypes extends BaseClass {
     const TableName = "FormTypes";
     const TableKey = "FormType";
     const ClassDesc = "نوع های فرم";
+    static $domains = [];
+    static $FK = [];
 
     public $FormType;
     public $FormTypePTitle;
@@ -23,6 +25,15 @@ class FormTypes extends BaseClass {
     public $LogID;
     public $RecordStatus;
 
+    public function getStatic($name){
+        return self::$$name;
+    }
+
+    /** 
+     * FormType constructor.
+     * @param array $headerInfo
+     * @param null $id
+     */
     public function __construct($headerInfo = array(), $id =null){
 
         $this->FormType= DataMember::CreateDMA(DataMember::Pattern_Num);
@@ -33,13 +44,5 @@ class FormTypes extends BaseClass {
         parent::__construct($headerInfo,$id);
 
     }
-    public function GetAll($SuperFormType){
-        $mysql = parent::getReportDBConnection();
-        echo $query = "SELECT * FROM FormTypes where RecordStatus<>'DELETED' order by FormTypeOrder";
-        $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement(array());
-        $objArray = $objArray->fetchAll();
-        InputValidation::ArrayEncoding($objArray);
-        return $objArray;
-    }
+    
 }//End of class FormTypes
