@@ -9,10 +9,15 @@
 // DIC configuration
 use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
+use Api\Controllers\FormTypesController;
+use Api\Controllers\ItemsController;
+//use Api\Controllers\FormCalendarsController;
 
 use Api\Models\SuperGroup;
 use Api\Models\Group;
-
+use Api\Models\Item;
+use Api\Models\FormType;
+use Api\Models\FormCalendar;
 
 
 use Monolog\Logger;
@@ -119,6 +124,11 @@ $container[FormTypesController::class] = function ($c) {
 $container[ItemsController::class] = function ($c) {
     $Item = new Item($c->get('headerInfo'));
     return new ItemsController($c,$Item);
+};
+
+$container[FormCalendarsController::class] = function ($c) {
+    $FormCalendar = new FormCalendar($c->get('headerInfo'));
+    return new FormCalendarsController($c,$FormCalendar);
 };
 
 /*$container[LectureController::class] = function ($c) {
