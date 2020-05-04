@@ -111,6 +111,16 @@ $container[GroupsController::class] = function ($c) {
     return new GroupsController($c,$Group);
 };
 
+$container[FormTypesController::class] = function ($c) {
+    $FormType = new FormType($c->get('headerInfo'));
+    return new FormTypesController($c,$FormType);
+};
+
+$container[ItemsController::class] = function ($c) {
+    $Item = new Item($c->get('headerInfo'));
+    return new ItemsController($c,$Item);
+};
+
 /*$container[LectureController::class] = function ($c) {
     $lecture = new lecture($c->get('headerInfo'));
     $doc = new DocAttachment($c->get('headerInfo'));

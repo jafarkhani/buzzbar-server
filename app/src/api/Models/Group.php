@@ -22,8 +22,8 @@ class Group extends BaseClass {
 
     public $GroupID;
     public $SuperGroupID;
-    public $GroupPTitle;
-    public $GroupETitle;
+    public $GroupPName;
+    public $GroupEName;
     public $GroupOrder;
     public $LogID;
     public $RecordStatus;
@@ -41,8 +41,8 @@ class Group extends BaseClass {
 
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->GroupPTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->GroupETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->GroupPName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->GroupEName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->GroupOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->RecordStatus = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
