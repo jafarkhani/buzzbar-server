@@ -147,7 +147,7 @@ class BaseController
                     "iTotalDisplayRecords" => 0,
                     "aaData" => array() //array of data fetched from db
                 );
-            }*/
+            }*/echo 'fffffff';
             $data = $this->obj->GetAll();
             if($data) {
                 return ResponseHelper::createSuccessfulResponse($response)
