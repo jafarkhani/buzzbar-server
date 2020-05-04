@@ -14,12 +14,13 @@ use InputValidation;
 class Group extends BaseClass {
 
     const TableName = "groups";
-    const TableKey = "GroupID";
+    const TableKey = "RecID";
     const ClassDesc = "گروه آیتم های کارنما";
 
     static $domains = [];
     static $FK = [];
 
+    public $RecID;
     public $GroupID;
     public $SuperGroupID;
     public $GroupPName;
@@ -39,6 +40,7 @@ class Group extends BaseClass {
      */
     public function __construct($headerInfo = array(), $id =null){
 
+        $this->RecID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->GroupPName = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
