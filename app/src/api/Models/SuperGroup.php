@@ -18,6 +18,8 @@ class SuperGroup extends BaseClass {
     const TableName = "SuperGroups";
     const TableKey = "SuperGroupID";
     const ClassDesc = "سرگروه آیتم های کارنمای جامع";
+    static $domains = [];
+    static $FK = [];
 
     const SuperGroupPTitle = "عنوان فارسی کارنمای جامع";
     const SuperGroupETitle = "عنوان لاتین کارنمای جامع";
@@ -30,8 +32,11 @@ class SuperGroup extends BaseClass {
     public $LogID;
     public $RecordStatus;
 
+    public function getStatic($name){
+        return self::$$name;
+    }
 
-    /**
+    /** 
      * SuperGroup constructor.
      * @param array $headerInfo
      * @param null $id
