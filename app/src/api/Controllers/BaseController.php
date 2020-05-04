@@ -214,7 +214,7 @@ class BaseController
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])
                     throw new \Exception('دسترسی غیر مجاز');
             }
-
+            echo 'fff';
             $this->obj->doInsert($params);
             $index = $this->obj->{$this->obj->getTablePk()};
 
