@@ -11,34 +11,18 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use pdodb;
 use ResponseHelper;
 use config;
-use Api\Models\Groups;
+use Api\Models\Group;
 
 
-class GroupsController{
+class GroupsController extends BaseController{
 
     protected $container;
-    protected $Groups;
+    protected $Group;
 
-    public function __construct(ContainerInterface $container, Groups $Groups){
-        $this->container = $container;
-        $this->Groups = $Groups;
+    public function __construct(ContainerInterface $container, Group $Group){
+        /*$this->container = $container;
+        $this->Group = $Group;*/
+        parent::__construct($container,$Group);
     }
 
-    public function select(Request $request, Response $response, array $args){
-        try{
-            $params= $request->getParsedBody();
-            echo $params['SuperGroupID'];
-            $objArray = $this->Groups->GetAll($params['SuperGroupID']);
-            if($objArray) {
-                return ResponseHelper::createSuccessfulResponse($response)
-                    ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
-                    ->write(json_encode($objArray));
-            }else{
-                return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::NO_CONTENT);
-            }
-        }catch (\Exception $ex) {
-            return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
-        }//End of try catch
-    }//End of member function select
-
-} //End of class GroupsController
+} //End of class GroupController

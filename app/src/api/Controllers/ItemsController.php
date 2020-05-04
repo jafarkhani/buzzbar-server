@@ -11,17 +11,18 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use pdodb;
 use ResponseHelper;
 use config;
-use Api\Models\Items;
+use Api\Models\Item;
 
 
-class ItemsController{
+class ItemsController extends BaseController{
 
     protected $container;
-    protected $Items;
+    protected $Item;
 
-    public function __construct(ContainerInterface $container, Items $Items){
-        $this->container = $container;
-        $this->Items = $Items;
+    public function __construct(ContainerInterface $container, Item $Item){
+        /*$this->container = $container;
+        $this->Item = $Item;*/
+        parent::__construct($container,$Item);
     }
 
 } //End of class ItemsController

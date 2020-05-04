@@ -1,7 +1,7 @@
 <?php
 /*
- * Author: rmahdizadeh
- * Date: 1398-05-05
+ * Author: M.Fattahi
+ * Date: 1399-02
 */
 
 namespace Api\Models;
@@ -11,11 +11,12 @@ use Api\Models\BaseClass;
 use EntityClass;
 use InputValidation;
 
-class Groups extends BaseClass {
+class Group extends BaseClass {
 
     const TableName = "groups";
     const TableKey = "GroupID";
     const ClassDesc = "گروه آیتم های کارنما";
+
     static $domains = [];
     static $FK = [];
 
@@ -49,4 +50,4 @@ class Groups extends BaseClass {
 
     }
     
-}//End of class Groups
+}//End of class Group

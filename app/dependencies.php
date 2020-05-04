@@ -11,7 +11,7 @@ use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
 
 use Api\Models\SuperGroup;
-use Api\Models\Groups;
+use Api\Models\Group;
 
 
 
@@ -107,8 +107,8 @@ $container[SuperGroupsController::class] = function ($c) {
 };
 
 $container[GroupsController::class] = function ($c) {
-    $Groups = new Groups($c->get('headerInfo'));
-    return new GroupsController($c,$Groups);
+    $Group = new Group($c->get('headerInfo'));
+    return new GroupsController($c,$Group);
 };
 
 /*$container[LectureController::class] = function ($c) {

@@ -11,9 +11,9 @@ use Api\Models\BaseClass;
 use EntityClass;
 use InputValidation;
 
-class Items extends BaseClass {
+class Item extends BaseClass {
 
-    const TableName = "Items";
+    const TableName = "items";
     const TableKey = "ItemID";
     const ClassDesc = "شاخص های فرم کارنما";
     static $domains = [];
@@ -67,4 +67,4 @@ class Items extends BaseClass {
 
     }
     
-}//End of class Items
+}//End of class Item

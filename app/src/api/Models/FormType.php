@@ -11,7 +11,7 @@ use Api\Models\BaseClass;
 use EntityClass;
 use InputValidation;
 
-class FormTypes extends BaseClass {
+class FormType extends BaseClass {
 
     const TableName = "FormTypes";
     const TableKey = "FormType";
@@ -45,4 +45,4 @@ class FormTypes extends BaseClass {
 
     }
     
-}//End of class FormTypes
+}//End of class FormType
