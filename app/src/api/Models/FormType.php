@@ -37,7 +37,7 @@ class FormType extends BaseClass {
     public function __construct($headerInfo = array(), $id =null){
 
         $this->FormType= DataMember::CreateDMA(DataMember::Pattern_Num);
-        $this->FormTypePTitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->FormTypePTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->FormTypeETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->RecordStatus = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);

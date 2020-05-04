@@ -208,7 +208,7 @@ class BaseController
             $params= $request->getParsedBody();echo '<br>params :';print_r($params);
             //$file = $request->getUploadedFiles();
             
-            $this->obj->validateParams($params);
+            $this->obj->validateParams($params);echo 'ggg';
 
             if(isset($params['PersonID'])){
                 if($this->headerInfo[HeaderKey::PERSON_ID]!=$params['PersonID'])

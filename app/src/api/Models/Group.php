@@ -39,9 +39,9 @@ class Group extends BaseClass {
      */
     public function __construct($headerInfo = array(), $id =null){
 
-        $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
+        $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->GroupPName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->GroupPName = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->GroupEName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->GroupOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
