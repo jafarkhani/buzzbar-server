@@ -202,7 +202,7 @@ class BaseController
       }
 
     public function insert(Request $request, Response $response, array $args)
-    {echo ' insert ';
+    {
         try{
 
             $params= $request->getParsedBody();
