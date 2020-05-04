@@ -11,7 +11,7 @@ use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
 use Api\Controllers\FormTypesController;
 use Api\Controllers\ItemsController;
-//use Api\Controllers\GroupsController;
+//use Api\Controllers\FormCalendarsController;
 
 // Api Routes
 
@@ -42,11 +42,11 @@ $app->group('/profportfolio/api/v1', function () {
     $this->post('/items/update', ItemsController::class . ':update')->setName('Items.update');
     $this->delete('/items/delete/{id}', ItemsController::class . ':delete')->setName('Items.delete');
 
-    /*$this->get('/groups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
-    $this->get('/groups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
-    $this->post('/groups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
-    $this->post('/groups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
-    $this->delete('/groups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');*/
+    /*$this->get('/formcalendars/select/{id}', FormCalendarsController::class . ':select')->setName('FormCalendars.select');
+    $this->get('/formcalendars/selectAll', FormCalendarsController::class . ':selectAll')->setName('FormCalendars.selectAll');
+    $this->post('/formcalendars/insert', FormCalendarsController::class . ':insert')->setName('FormCalendars.insert');
+    $this->post('/formcalendars/update', FormCalendarsController::class . ':update')->setName('FormCalendars.update');
+    $this->delete('/formcalendars/delete/{id}', FormCalendarsController::class . ':delete')->setName('FormCalendars.delete');*/
 });
 
 /*$app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request, $response, $args) {

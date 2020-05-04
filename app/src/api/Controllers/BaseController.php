@@ -205,7 +205,7 @@ class BaseController
     {echo ' insert ';
         try{
 
-            $params= $request->getParsedBody();
+            $params= $request->getParsedBody();echo '<br>params :';print_r($params);
             //$file = $request->getUploadedFiles();
             
             $this->obj->validateParams($params);
