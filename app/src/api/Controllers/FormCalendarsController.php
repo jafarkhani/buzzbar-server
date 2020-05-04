@@ -11,18 +11,18 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use pdodb;
 use ResponseHelper;
 use config;
-use Api\Models\Item;
+use Api\Models\FormCalendar;
 
 
-class ItemsController extends BaseController{
+class FormCalendarsController extends BaseController{
 
     protected $container;
-    protected $Item;
+    protected $FormCalendar;
 
-    public function __construct(ContainerInterface $container, Item $Item){
+    public function __construct(ContainerInterface $container, FormCalendar $FormCalendar){
         /*$this->container = $container;
-        $this->Item = $Item;*/
-        parent::__construct($container,$Item);
+        $this->FormCalendar = $FormCalendar;*/
+        parent::__construct($container,$FormCalendar);
     }
 
-} //End of class ItemsController
+} //End of class FormCalendarsController

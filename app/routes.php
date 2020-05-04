@@ -1,17 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sajjadi
- * Date: 12/31/18
- * Time: 3:24 PM
+ * User: M.Fattahi
+ * Date: 1399-02
  */
-error_reporting(1);
-ini_set("display_errors", E_ALL);
 use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
 use Api\Controllers\FormTypesController;
 use Api\Controllers\ItemsController;
-//use Api\Controllers\FormCalendarsController;
+use Api\Controllers\FormCalendarsController;
 
 // Api Routes
 
@@ -42,11 +39,11 @@ $app->group('/profportfolio/api/v1', function () {
     $this->post('/items/update', ItemsController::class . ':update')->setName('Items.update');
     $this->delete('/items/delete/{id}', ItemsController::class . ':delete')->setName('Items.delete');
 
-    /*$this->get('/formcalendars/select/{id}', FormCalendarsController::class . ':select')->setName('FormCalendars.select');
+    $this->get('/formcalendars/select/{id}', FormCalendarsController::class . ':select')->setName('FormCalendars.select');
     $this->get('/formcalendars/selectAll', FormCalendarsController::class . ':selectAll')->setName('FormCalendars.selectAll');
     $this->post('/formcalendars/insert', FormCalendarsController::class . ':insert')->setName('FormCalendars.insert');
     $this->post('/formcalendars/update', FormCalendarsController::class . ':update')->setName('FormCalendars.update');
-    $this->delete('/formcalendars/delete/{id}', FormCalendarsController::class . ':delete')->setName('FormCalendars.delete');*/
+    $this->delete('/formcalendars/delete/{id}', FormCalendarsController::class . ':delete')->setName('FormCalendars.delete');
 });
 
 /*$app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request, $response, $args) {
