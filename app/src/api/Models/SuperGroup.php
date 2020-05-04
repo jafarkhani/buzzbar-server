@@ -47,7 +47,7 @@ class SuperGroup extends BaseClass {
         parent::__construct($headerInfo,$id);
 
     }
-    public function GetAll(){
+    /*public function GetAll(){
       $mysql = parent::getReportDBConnection();
       $query = "SELECT * FROM SuperGroups where RecordStatus<>'DELETED' order by SuperGroupOrder";
       $mysql->Prepare($query);
@@ -55,6 +55,6 @@ class SuperGroup extends BaseClass {
       $objArray = $objArray->fetchAll();
       InputValidation::ArrayEncoding($objArray);
       return $objArray;
-    }
+    }*/
 
 }
