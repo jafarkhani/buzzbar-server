@@ -9,6 +9,9 @@ error_reporting(1);
 ini_set("display_errors", E_ALL);
 use Api\Controllers\SuperGroupsController;
 use Api\Controllers\GroupsController;
+use Api\Controllers\FormTypesController;
+use Api\Controllers\ItemsController;
+//use Api\Controllers\GroupsController;
 
 // Api Routes
 
@@ -21,7 +24,29 @@ $app->group('/profportfolio/api/v1', function () {
     $this->post('/supergroups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
     $this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
 
-    $this->post('/groups/select', GroupsController::class . ':select')->setName('Groups.select');
+    $this->get('/groups/select/{id}', GroupsController::class . ':select')->setName('Groups.select');
+    $this->get('/groups/selectAll', GroupsController::class . ':selectAll')->setName('Groups.selectAll');
+    $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
+    $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
+    $this->delete('/groups/delete/{id}', GroupsController::class . ':delete')->setName('Groups.delete');
+
+    $this->get('/formtypes/select/{id}', FormTypesController::class . ':select')->setName('FormTypes.select');
+    $this->get('/formtypes/selectAll', FormTypesController::class . ':selectAll')->setName('FormTypes.selectAll');
+    $this->post('/formtypes/insert', FormTypesController::class . ':insert')->setName('FormTypes.insert');
+    $this->post('/formtypes/update', FormTypesController::class . ':update')->setName('FormTypes.update');
+    $this->delete('/formtypes/delete/{id}', FormTypesController::class . ':delete')->setName('FormTypes.delete');
+
+    $this->get('/items/select/{id}', ItemsController::class . ':select')->setName('Items.select');
+    $this->get('/items/selectAll', ItemsController::class . ':selectAll')->setName('Items.selectAll');
+    $this->post('/items/insert', ItemsController::class . ':insert')->setName('Items.insert');
+    $this->post('/items/update', ItemsController::class . ':update')->setName('Items.update');
+    $this->delete('/items/delete/{id}', ItemsController::class . ':delete')->setName('Items.delete');
+
+    /*$this->get('/groups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
+    $this->get('/groups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
+    $this->post('/groups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
+    $this->post('/groups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
+    $this->delete('/groups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');*/
 });
 
 /*$app->delete('/profportfolio/api/v1/supergroups/delete/{id}', function ($request, $response, $args) {
