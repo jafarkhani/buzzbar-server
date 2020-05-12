@@ -103,8 +103,7 @@ class BaseClass extends EntityClass{
 
     public function getInfoP($id){
         $mysql = self::getDBConnection();
-        $query = "SELECT * FROM ".self::getTableName()." where RecordStatus<>'DELETED' 
-            and ".self::getTablePk()."= :id  ";
+        $query = "SELECT * FROM ".self::getTableName()." where ".self::getTablePk()."= :id  ";//RecordStatus<>'DELETED'             and 
         $mysql->Prepare($query);
         $objRes = $mysql->ExecuteStatement(array(":id"=>$id));
         $objArray = $objRes->fetch();
@@ -139,8 +138,7 @@ class BaseClass extends EntityClass{
 
   public function getInfo($id){
       $mysql = self::getDBConnection();
-      $query = "SELECT * FROM ".self::getTableName()."  where RecordStatus<>'DELETED' 
-            and ".self::getTablePk()."= :id ";
+      $query = "SELECT * FROM ".self::getTableName()."  where  ".self::getTablePk()."= :id ";//RecordStatus<>'DELETED'          and
       $mysql->Prepare($query);
       $objArray = $mysql->ExecuteStatement(array(":id"=>$id));
       $objArray = $objArray->fetch();
@@ -205,7 +203,7 @@ class BaseClass extends EntityClass{
         }
         $query = "SELECT s.* $select FROM ".self::getTableName()." s 
             $extJoin
-            where s.RecordStatus<>'DELETED'"
+            where 1=1 "//s.RecordStatus<>'DELETED'
             .($wh!='' ? " and $wh " : "");
         //oreder show be validate
         if($order!=='')
@@ -291,10 +289,11 @@ class BaseClass extends EntityClass{
             throw new \Exception('This record is not in the table therefor can not be deleted.');
         }
 
-        $this->RecordStatus = 'DELETED';
-        $this->setId($this->id());
+        //$this->RecordStatus = 'DELETED';
+        //$this->setId($this->id());
 
-        $res = parent::update(self::getTableName(), $this, self::getTablePk() . " = :id", array(":id" => $this->id()));
+        //$res = parent::update(self::getTableName(), $this, self::getTablePk() . " = :id", array(":id" => $this->id()));
+        $res=parent::delete(self::getTableName(), self::getTablePk()." = :id ", array(":id" => $this->id()));
 
         if($res === false){
             throw new \Exception('Failed to delete the record.');
