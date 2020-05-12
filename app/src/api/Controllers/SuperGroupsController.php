@@ -61,7 +61,7 @@ class SuperGroupsController extends BaseController{
       }
   }*/
   
-  public function delete(Request $request, Response $response, array $args)
+  /*public function delete(Request $request, Response $response, array $args)
     {echo '<br>delete<br>';
         echo $id = $args['id'];
         try{
@@ -73,6 +73,6 @@ class SuperGroupsController extends BaseController{
         }catch (\Exception $ex){
             return ResponseHelper::createfailureResponseByException($response,$ex->getMessage());
         }
-    }
+    }*/
 
 } //End of class SuperGroupsController

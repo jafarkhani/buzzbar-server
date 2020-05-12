@@ -44,7 +44,7 @@ class SuperGroup extends BaseClass {
      */
     public function __construct($headerInfo = array(), $id =null)
     {
-        $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_Num);
+        $this->RecID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->SuperGroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->SuperGroupPTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->SuperGroupETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
