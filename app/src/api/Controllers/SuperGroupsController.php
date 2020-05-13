@@ -26,17 +26,18 @@ class SuperGroupsController extends BaseController{
   }
 
   public function testinsert(Request $request, Response $response, array $args){
+    
+    $mysql = $this->obj->getDBConnection();
+    $query = "select * from groups";
+        
+    $mysql->Prepare($query);
+    $co = $mysql->ExecuteStatement(array());
+
+    $co = $co->fetchAll();
+    //return $co;
     return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
-                    ->write(json_encode("hello"));
-    /*$mysql = $this->obj->getDBConnection();
-    $query = "SELECT count(*) as co FROM ".self::getTableName()." s where s.RecordStatus<>'DELETED'"
-        .($wh!='' ? " and $wh " : "");
-    $mysql->Prepare($query);
-    $co = $mysql->ExecuteStatement($pa);
-
-    $co = $co->fetch();
-    return $co['co'];*/
+                    ->write(json_encode($co));
   }
   /*public function selectAll(Request $request, Response $response, array $args){
     try{
