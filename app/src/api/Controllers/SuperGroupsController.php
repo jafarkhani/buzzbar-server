@@ -25,7 +25,7 @@ class SuperGroupsController extends BaseController{
     parent::__construct($container,$SuperGroup);
   }
 
-  public function testinsert(){
+  public function testinsert(Request $request, Response $response, array $args){
     return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
                     ->write(json_encode("hello"));
