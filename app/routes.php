@@ -14,6 +14,7 @@ use Api\Controllers\FormCalendarsController;
 
 $app->group('/profportfolio/api/v1', function () {
 	
+    //$this->post('/test/insert', SuperGroupsController::class . ':testinsert')->setName('SuperGroups.testinsert'); 
     $this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
     $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
     /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
@@ -56,9 +57,9 @@ $app->get('/', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
         return $response->write("Hello 1234***** ");
 });
-$app->get('/super', function ($request, $response, $args) {
+$app->get('/test', function ($request, $response, $args) {
     //echo $_SERVER['DOCUMENT_ROOT'];
-        return $response->write(" Super Groups Select***** " );
+        return $response->write(" test " );
 });
 
 $app->get('/helo/{name}', function($request, $response, $args) {
