@@ -105,10 +105,10 @@ class BaseController
     }
 
     public function selectAll(Request $request, Response $response, array $args)
-    {echo 'hhhh';
+    {
         try{
 
-            $params= $request->getQueryParams();
+            $params= $request->getQueryParams();print_r($params);
 
             $this->obj->validateParams($params);
 
@@ -134,12 +134,13 @@ class BaseController
                 $order = $params['order']." ".$params['orderDir'];
                 echo 'fffff';
                 $data = $this->obj->getAll($wcl,$wp,$order,(int)$params['start'],(int)$params['rowperpage']);
-
+                echo 'bbbbbb';
                 $data = array(
                     "iTotalRecords" => $fco,
                     "iTotalDisplayRecords" => $co,
                     "aaData" => $data
                 );
+
 
             }
             else{
