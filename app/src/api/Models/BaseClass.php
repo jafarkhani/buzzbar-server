@@ -216,9 +216,9 @@ class BaseClass extends EntityClass{
             $query .= " order by $order ";
         if($start!=='' and $count!==''){
             $query .= " limit ".(int)$start." , ".(int)$count;
-        }echo $query;
+        }//echo $query;
         $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement($pa);echo 'fffffff';
+        $objArray = $mysql->ExecuteStatement($pa);
 
         $objArray = $objArray->fetchAll();print_r($objArray);
         InputValidation::ArrayEncoding($objArray);
