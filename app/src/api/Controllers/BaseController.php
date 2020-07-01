@@ -105,18 +105,18 @@ class BaseController
     }
 
     public function selectAll(Request $request, Response $response, array $args)
-    {echo 'sssss';
+    {
         try{
 
-            $params= $request->getQueryParams();print_r($params);
+            $params= $request->getQueryParams();
 
             $this->obj->validateParams($params);
 
 
             //$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
-            echo 'eeee';
-            echo $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
-            echo 'xxxx';
+            
+            $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
+            
             if($co>0){
                 $wcl = '';//"s.PersonID = :PersonID";
                 $wp = array(/*":PersonID"=>$PersonID*/);
