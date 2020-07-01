@@ -154,7 +154,7 @@ class BaseController
                 );
             }
             //$data = $this->obj->GetAll();
-            if($data) {echo '<br>yes<br>';print_r($data);
+            if($data) {echo '<br>yes<br>';print_r($data);echo 'wwwwww';
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
                     ->write(json_encode($data));
