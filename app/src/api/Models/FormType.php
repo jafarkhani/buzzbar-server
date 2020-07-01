@@ -16,8 +16,10 @@ class FormType extends BaseClass {
     const TableName = "FormTypes";
     const TableKey = "FormType";
     const ClassDesc = "نوع های فرم";
+
     static $domains = [];
     static $FK = [];
+    static $SearchField = "FormTypePTitle";
 
     public $FormType;
     public $FormTypePTitle;

@@ -18,8 +18,10 @@ class SuperGroup extends BaseClass {
     const TableName = "SuperGroups";
     const TableKey = "RecID";
     const ClassDesc = "سرگروه آیتم های کارنمای جامع";
+
     static $domains = [];
     static $FK = [];
+    static $SearchField = "SuperGroupPTitle";
 
     const SuperGroupPTitle = "عنوان فارسی کارنمای جامع";
     const SuperGroupETitle = "عنوان لاتین کارنمای جامع";

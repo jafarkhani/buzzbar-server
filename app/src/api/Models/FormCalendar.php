@@ -16,8 +16,10 @@ class FormCalendar extends BaseClass {
     const TableName = "FormCalendars";
     const TableKey = "FormCalendarID";
     const ClassDesc = "تقویم های فرم کارنما";
+    
     static $domains = [];
     static $FK = ["FormType"=>[]];
+    static $SearchField = "FormCalendarPTitle";
     //static $FK = ["LesCode"=>[],"LanguageID"=>["type"=>"select"],"semester"=>["type"=>"select"]];
 
     public $FormCalendarID;

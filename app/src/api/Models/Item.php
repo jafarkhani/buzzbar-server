@@ -16,8 +16,10 @@ class Item extends BaseClass {
     const TableName = "items";
     const TableKey = "ItemID";
     const ClassDesc = "شاخص های فرم کارنما";
+    
     static $domains = [];
     static $FK = ["FormType"=>[]];
+    static $SearchField = "ItemPTitle";
 
     public $ItemID;
     public $FormType;
