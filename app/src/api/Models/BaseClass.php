@@ -220,7 +220,7 @@ class BaseClass extends EntityClass{
         $mysql->Prepare($query);
         $objArray = $mysql->ExecuteStatement($pa,PDO::FETCH_ASSOC,true);
 
-        $objArray = $objArray->fetchAll();
+        $objArray = $objArray->fetchAll();print_r($objArray);
         InputValidation::ArrayEncoding($objArray);
         return $objArray;
     }
