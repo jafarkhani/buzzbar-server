@@ -105,10 +105,10 @@ class BaseController
     }
 
     public function selectAll(Request $request, Response $response, array $args)
-    {
+    {echo 'sssss';
         try{
 
-            $params= $request->getParsedBody();
+            $params= $request->getParsedBody();print_r($params);
 
             $this->obj->validateParams($params);
 
