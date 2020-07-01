@@ -122,7 +122,7 @@ class BaseController
                 //inputevalidation for $params["searchValue"]
 
                 if($params["searchValue"]!=''){
-                   $wcl .= " and s.".$this->obj->getStatic("SearchField")." like  :sf ";
+                   $wcl .= " s.".$this->obj->getStatic("SearchField")." like  :sf ";
                    $wp[":sf"] = "%".$params["searchValue"]."%";echo 'ffff';
                    $fco = $this->obj->getAllCount($wcl ,$wp);echo 'gggg';
                 }
