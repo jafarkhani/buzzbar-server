@@ -105,13 +105,10 @@ class BaseController
     }
 
     public function selectAll(Request $request, Response $response, array $args)
-    {//echo 'selectAll <br>';
+    {
         try{
 
             $params= $request->getQueryParams();
-            //echo 'qparams ';print_r($params);echo '<br>';
-            //echo 'bparams';print_r($request->getParsedBody());echo '<br>';
-
             $this->obj->validateParams($params);
 
 
@@ -134,17 +131,14 @@ class BaseController
                 }
 
                 $order = $params['order']." ".$params['orderDir'];
-                //echo 'fffff<br>';
+                
                 $data = $this->obj->getAll($wcl,$wp,$order,(int)$params['start'],(int)$params['rowperpage']);
-                //echo 'bbbbbb<br>';
 
                 $data = array(
                     "iTotalRecords" => $fco,
                     "iTotalDisplayRecords" => $co,
                     "aaData" => $data
                 );
-
-
             }
             else{
                 $data = array(
@@ -154,7 +148,7 @@ class BaseController
                 );
             }
             //$data = $this->obj->GetAll();
-            if($data) {//echo '<br>yes<br>';print_r($data);echo 'wwwwww';
+            if($data) {
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
                     ->write(json_encode($data));
@@ -187,7 +181,7 @@ class BaseController
         }
     }*/
          public function select(Request $request, Response $response, array $args)
-      {
+        {
           try{
               //$params= $request->getParsedBody();
 
