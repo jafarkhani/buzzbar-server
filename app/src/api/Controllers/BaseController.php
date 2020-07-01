@@ -108,7 +108,7 @@ class BaseController
     {
         try{
 
-            $params= $request->getQueryParams();print_r($params);
+            $params= $request->getQueryParams();
             $this->obj->validateParams($params);
 
 
@@ -123,8 +123,8 @@ class BaseController
 
                 if($params["searchValue"]!=''){
                    $wcl .= " s.".$this->obj->getStatic("SearchField")." like  :sf ";
-                   $wp[":sf"] = "%".$params["searchValue"]."%";echo 'ffff';
-                   $fco = $this->obj->getAllCount($wcl ,$wp);echo 'gggg';
+                   $wp[":sf"] = "%".$params["searchValue"]."%";
+                   $fco = $this->obj->getAllCount($wcl ,$wp);
                 }
                 else{
                     $fco = $co;
