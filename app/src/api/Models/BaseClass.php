@@ -218,7 +218,7 @@ class BaseClass extends EntityClass{
             $query .= " limit ".(int)$start." , ".(int)$count;
         }//echo $query;
         $mysql->Prepare($query);
-        $objArray = $mysql->ExecuteStatement($pa,PDO::FETCH_ASSOC,trueP);
+        $objArray = $mysql->ExecuteStatement($pa,PDO::FETCH_ASSOC,true);
 
         $objArray = $objArray->fetchAll();
         InputValidation::ArrayEncoding($objArray);
