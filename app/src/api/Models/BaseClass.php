@@ -212,7 +212,7 @@ class BaseClass extends EntityClass{
             where s.RecordStatus<>'DELETED'"
             .($wh!='' ? " and $wh " : "");
         //oreder show be validate
-        if($order!=='')
+        if(trim($order)!=='')
             $query .= " order by $order ";
         if($start!=='' and $count!==''){
             $query .= " limit ".(int)$start." , ".(int)$count;
