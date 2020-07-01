@@ -114,8 +114,9 @@ class BaseController
 
 
             //$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
-            $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
-
+            echo 'eeee';
+            echo $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
+            echo 'xxxx';
             if($co>0){
                 $wcl = '';//"s.PersonID = :PersonID";
                 $wp = array(/*":PersonID"=>$PersonID*/);
