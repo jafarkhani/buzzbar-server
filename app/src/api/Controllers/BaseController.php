@@ -105,7 +105,7 @@ class BaseController
     }
 
     public function selectAll(Request $request, Response $response, array $args)
-    {
+    {echo 'hhhh';
         try{
 
             $params= $request->getQueryParams();
