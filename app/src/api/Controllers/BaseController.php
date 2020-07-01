@@ -132,7 +132,7 @@ class BaseController
                 }
 
                 $order = $params['order']." ".$params['orderDir'];
-
+                echo 'fffff';
                 $data = $this->obj->getAll($wcl,$wp,$order,(int)$params['start'],(int)$params['rowperpage']);
 
                 $data = array(
