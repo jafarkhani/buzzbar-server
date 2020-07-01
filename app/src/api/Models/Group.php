@@ -15,6 +15,7 @@ class Group extends BaseClass {
 
     const TableName = "groups";
     const TableKey = "RecID";
+    const SearchField = "GroupPName";
     const ClassDesc = "گروه آیتم های کارنما";
 
     static $domains = [];
