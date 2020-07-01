@@ -153,7 +153,7 @@ class BaseController
                     "aaData" => array() //array of data fetched from db
                 );
             }
-            $data = $this->obj->GetAll();
+            //$data = $this->obj->GetAll();
             if($data) {//echo '<br>yes<br>';print_r($data);echo 'wwwwww';
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
