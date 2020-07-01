@@ -214,7 +214,7 @@ class BaseClass extends EntityClass{
         //oreder show be validate
         if(trim($order)!=='')
             $query .= " order by $order ";
-        if($start!=='' and $count!==''){
+        if($start!=='' and $count!=='0'){
             $query .= " limit ".(int)$start." , ".(int)$count;
         }echo $query;
         $mysql->Prepare($query);
