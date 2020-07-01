@@ -28,7 +28,7 @@ class SuperGroupsController extends BaseController{
   public function testinsert(Request $request, Response $response, array $args){
     
     $mysql = $this->obj->getDBConnection();
-    $query = "select * from groups";
+    $query = "insert into groups ()";
         
     $mysql->Prepare($query);
     $co = $mysql->ExecuteStatement(array());

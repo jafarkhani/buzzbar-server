@@ -113,12 +113,12 @@ class BaseController
             $this->obj->validateParams($params);
 
 
-            /*$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
-            $co = $this->obj->getAllCount("PersonID = :PersonID" ,array(":PersonID"=>$PersonID));
+            //$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
+            $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
 
             if($co>0){
-                $wcl = "s.PersonID = :PersonID";
-                $wp = array(":PersonID"=>$PersonID);
+                $wcl = '';//"s.PersonID = :PersonID";
+                $wp = array(/*":PersonID"=>$PersonID*/);
                 //inputevalidation for $params["searchValue"]
 
                 if($params["searchValue"]!=''){
@@ -147,8 +147,8 @@ class BaseController
                     "iTotalDisplayRecords" => 0,
                     "aaData" => array() //array of data fetched from db
                 );
-            }*/
-            $data = $this->obj->GetAll();
+            }
+            //$data = $this->obj->GetAll();
             if($data) {
                 return ResponseHelper::createSuccessfulResponse($response)
                     ->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)

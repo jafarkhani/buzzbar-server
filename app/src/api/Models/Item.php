@@ -17,7 +17,7 @@ class Item extends BaseClass {
     const TableKey = "ItemID";
     const ClassDesc = "شاخص های فرم کارنما";
     static $domains = [];
-    static $FK = [];
+    static $FK = ["FormType"=>[]];
 
     public $ItemID;
     public $FormType;
@@ -52,13 +52,13 @@ class Item extends BaseClass {
         $this->GroupID= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->ItemPTitle = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
         $this->ItemETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->StandardValue= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->ScoreUnit= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->StandardValue= DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+        $this->ScoreUnit= DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
         $this->ScoreThreshold= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->MaxScore= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
         $this->StandardMaxScore= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->objective= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->ScoreReference= DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+        $this->objective= DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+        $this->ScoreReference= DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
         $this->ItemOrder= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->LogID= DataMember::CreateDMA(DataMember::Pattern_Num);
         $this->RecordStatus = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);

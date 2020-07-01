@@ -161,7 +161,7 @@ class BaseClass extends EntityClass{
         }
         $extJoin = '';
         $FK = $this->getStatic('FK');
-        if(count($FK)){echo ' fk ';
+        if(count($FK)){
             foreach ($FK as $key=>$value){
                 switch ($key){
                     case 'StNo':
@@ -197,6 +197,10 @@ class BaseClass extends EntityClass{
                     case 'FldCode':
                         $extJoin .= "left join StudyFields ef on (s.FldCode=ef.FldCode) ";
                         $select .= ",ef.PFldName as FldCode_PFldName ";
+                        break;
+                    case 'FormType':
+                        $extJoin .= "left join FormTypes ft using (FormType) ";
+                        $select .= ",ft.FormTypePTitle as FormTypeTitle ";
                         break;
 
                 }
