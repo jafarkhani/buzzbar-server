@@ -108,7 +108,7 @@ class BaseController
     {echo 'sssss';
         try{
 
-            $params= $request->getParsedBody();print_r($params);
+            $params= $request->getParsedBody();print_r($args);
 
             $this->obj->validateParams($params);
 
