@@ -120,17 +120,24 @@ class BaseController
                 $wcl = '';//"s.PersonID = :PersonID";
                 $wp = array(/*":PersonID"=>$PersonID*/);
                 //inputevalidation for $params["searchValue"]
+                $fco = $co;
 
                 if($params["searchValue"]!=''){
-                   $wcl .= " s.".$this->obj->getStatic("SearchField")." like :sf ";
-                   $wp[":sf"] = "%".$params["searchValue"]."%";
-                   $fco = $this->obj->getAllCount($wcl ,$wp);
+                    $wcl .= " and s.".$this->obj->getStatic("SearchField")." like :sf ";
+                    $wp[":sf"] = "%".$params["searchValue"]."%";
+                    //$fco = $this->obj->getAllCount($wcl ,$wp);
                 }
-                elseif($params["filterValue"]!=''){
-                   $wcl .= " s.".$this->obj->getStatic("FilterField")." = :ff ";
-                   $wp[":sf"] = "%".$params["filterValue"]."%";
-                   $fco = $this->obj->getAllCount($wcl ,$wp);
+
+                if(is_array($params["filterValue"])){
+                	foreach($params["filterValue"] as $field->$value)
+                	{
+	                    $wcl .= " and ".$field." = :".$field." ";
+	                    $wp[":".$field] = $value;
+                	}
+                	
                 }
+                if($wcl!='')
+                	$fco = $this->obj->getAllCount($wcl ,$wp);
                 else{
                     $fco = $co;
                 }

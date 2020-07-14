@@ -214,8 +214,8 @@ class BaseClass extends EntityClass{
         }
         $query = "SELECT s.* $select FROM ".self::getTableName()." s 
             $extJoin
-            where s.RecordStatus<>'DELETED'"
-            .($wh!='' ? " and $wh " : "");
+            where s.RecordStatus<>'DELETED' "
+            .($wh!='' ? $wh : "");
         //oreder show be validate
         if(trim($order)!=='')
             $query .= " order by $order ";

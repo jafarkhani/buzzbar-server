@@ -20,6 +20,7 @@ class Item extends BaseClass {
     static $domains = [];
     static $FK = ["SuperGroupID"=>[],"FormType"=>[]];
     static $SearchField = "ItemPTitle";
+    static $FilterField = ["SuperGroupID","FormType"];
 
     public $ItemID;
     public $FormType;
