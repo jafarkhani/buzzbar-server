@@ -108,10 +108,10 @@ class BaseController
     {
         try{
 
-            $params= $request->getQueryParams();print_r($params);
+            $params= $request->getQueryParams();
             $this->obj->validateParams($params);
 
-            print_r($params);
+            //print_r($params);
             //$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
             
             $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
@@ -128,9 +128,9 @@ class BaseController
                     //$fco = $this->obj->getAllCount($wcl ,$wp);
                 }
 
-                if(is_array($params["filterValue"])){echo '<br><br>';print_r($params["filterValue"]);
+                if(is_array($params["filterValue"])){echo '<br>params<br>';print_r($params["filterValue"]);
                 	foreach($params["filterValue"] as $ff)
-                	{	echo '<br>gggg'.$ff.'nnnnn<br>';print_r($ff);
+                	{	echo '<br>gggg'.$ff.'nnnnn<br>';echo 'ttt';print_r($ff);
 	                    $wcl .= " and ".$field." = :".$field." ";
 	                    $wp[":".$field] = $value;
                 	}
