@@ -131,8 +131,8 @@ class BaseController
                 if(is_array($params["filterValue"])){//echo '<br>params<br>';print_r($params["filterValue"]);
                 	foreach($params["filterValue"] as $field=>$value)
                 	{	
-	                    $wcl .= " and ".$field." = :".$field." ";
-	                    $wp[":".$field] = $value;
+	                    $wcl .= " and ".$field." like :".$field." ";
+	                    $wp[":".$field] = "%".$value."%";
                 	}
                 	
                 }
