@@ -128,9 +128,9 @@ class BaseController
                     //$fco = $this->obj->getAllCount($wcl ,$wp);
                 }
 
-                if(is_array($params["filterValue"])){echo '<br>params<br>';print_r($params["filterValue"]);
+                if(is_array($params["filterValue"])){//echo '<br>params<br>';print_r($params["filterValue"]);
                 	foreach($params["filterValue"] as $field=>$value)
-                	{	echo '<br>gggg'.$field.'nnnnn'.$value.'<br>';//echo 'ttt';print_r($ff);
+                	{	
 	                    $wcl .= " and ".$field." = :".$field." ";
 	                    $wp[":".$field] = $value;
                 	}
