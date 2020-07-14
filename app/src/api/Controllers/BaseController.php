@@ -129,8 +129,8 @@ class BaseController
                 }
 
                 if(is_array($params["filterValue"])){echo '<br>params<br>';print_r($params["filterValue"]);
-                	foreach($params["filterValue"] as $ff)
-                	{	echo '<br>gggg'.$ff.'nnnnn<br>';echo 'ttt';print_r($ff);
+                	foreach($params["filterValue"] as $field=>$value)
+                	{	echo '<br>gggg'.$field.'nnnnn'.$value.'<br>';//echo 'ttt';print_r($ff);
 	                    $wcl .= " and ".$field." = :".$field." ";
 	                    $wp[":".$field] = $value;
                 	}
