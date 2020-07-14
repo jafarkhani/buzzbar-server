@@ -130,7 +130,7 @@ class BaseController
 
                 if(is_array($params["filterValue"])){echo '<br><br>';print_r($params["filterValue"]);
                 	foreach($params["filterValue"] as $field->$value)
-                	{
+                	{	echo '<br>'.$field.' '.$value.'<br>';
 	                    $wcl .= " and ".$field." = :".$field." ";
 	                    $wp[":".$field] = $value;
                 	}
