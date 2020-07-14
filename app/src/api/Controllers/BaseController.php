@@ -137,7 +137,7 @@ class BaseController
                 	
                 }
                 if($wcl!='')
-                	$fco = $this->obj->getAllCount($wcl ,$wp);
+                	$fco = count($this->obj->getAll($wcl,$wp,$order));//$this->obj->getAllCount($wcl ,$wp);
                 else{
                     $fco = $co;
                 }
