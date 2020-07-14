@@ -111,7 +111,7 @@ class BaseController
             $params= $request->getQueryParams();
             $this->obj->validateParams($params);
 
-
+            print_r($params);
             //$PersonID = $this->headerInfo[HeaderKey::PERSON_ID];
             
             $co = $this->obj->getAllCount(/*"PersonID = :PersonID" ,array(":PersonID"=>$PersonID)*/);
