@@ -202,6 +202,11 @@ class BaseClass extends EntityClass{
                         $extJoin .= "left join FormTypes ft using (FormType) ";
                         $select .= ",ft.FormTypePTitle as FormTypeTitle ";
                         break;
+                    case 'SuperGroupID':
+                        $extJoin .= "left join groups g using (GroupID) ";
+                        $select .= ",g.SuperGroupID as SuperGroupID ";
+                        break;
+
 
                 }
 

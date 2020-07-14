@@ -18,7 +18,7 @@ class Item extends BaseClass {
     const ClassDesc = "شاخص های فرم کارنما";
     
     static $domains = [];
-    static $FK = ["FormType"=>[]];
+    static $FK = ["SuperGroupID"=>[],"FormType"=>[]];
     static $SearchField = "ItemPTitle";
 
     public $ItemID;
