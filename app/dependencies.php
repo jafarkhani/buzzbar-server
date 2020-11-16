@@ -30,7 +30,7 @@ $container['errorHandler'] = function ($container) {
         $container['logger']->critical($exception->getMessage() . " file:" . 
             $exception->getFile() . " line " . $exception->getLine());
 
-		throw $exception;
+		//throw $exception;
         $response = $container['response'];
 		
         return $response->withJson(['errors' => 'Something went wrong!'], 500);
