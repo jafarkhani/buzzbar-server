@@ -1,0 +1,8 @@
+[2020-11-16 12:59:15] profportfolio-service.CRITICAL: Callable App\Controllers\GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"f476b5f"}
+[2020-11-16 13:00:51] profportfolio-service.CRITICAL: Callable App\Controllers\GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"580bcd3"}
+[2020-11-16 13:17:35] profportfolio-service.CRITICAL: Callable App\Controllers\GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"89e50b4"}
+[2020-11-16 13:24:26] profportfolio-service.CRITICAL: Callable GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"548eae2"}
+[2020-11-16 13:26:49] profportfolio-service.CRITICAL: Callable GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"9c91023"}
+[2020-11-16 13:28:51] profportfolio-service.CRITICAL: Callable GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"aa8b35e"}
+[2020-11-16 13:29:29] profportfolio-service.CRITICAL: Callable GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"ab6d287"}
+[2020-11-16 13:33:33] profportfolio-service.CRITICAL: Callable GroupsController does not exist file:D:\projects\service\profportfolio\vendor\slim\slim\Slim\CallableResolver.php line 99 [] {"uid":"6ba5f36"}

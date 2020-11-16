@@ -4,26 +4,14 @@
  * User: M.Fattahi
  * Date: 1399-02
  */
-use Api\Controllers\SuperGroupsController;
-use Api\Controllers\GroupsController;
-use Api\Controllers\FormTypesController;
-use Api\Controllers\ItemsController;
-use Api\Controllers\FormCalendarsController;
 
-// Api Routes
+use ProfPortfolio\Controllers\GroupsController;
 
-$app->group('/profportfolio/api/v1', function () {
+$app->group('/api/v1', function () {
 	
-    //$this->post('/test/insert', SuperGroupsController::class . ':testinsert')->setName('SuperGroups.testinsert'); 
-    $this->get('/supergroups/select/{id}', SuperGroupsController::class . ':select')->setName('SuperGroups.select');
-    $this->get('/supergroups/selectAll', SuperGroupsController::class . ':selectAll')->setName('SuperGroups.selectAll');
-    /*$this->post('/supergroups/select[/{params:.*}]', SuperGroupsController::class . ':select')->setName('SuperGroups.select');// params is the optional query parameters for selection*/
-    $this->post('/supergroups/insert', SuperGroupsController::class . ':insert')->setName('SuperGroups.insert');
-    $this->post('/supergroups/update', SuperGroupsController::class . ':update')->setName('SuperGroups.update');
-    $this->delete('/supergroups/delete/{id}', SuperGroupsController::class . ':delete')->setName('SuperGroups.delete');
-
-    $this->get('/groups/select/{id}', GroupsController::class . ':select')->setName('Groups.select');
-    $this->get('/groups/selectAll', GroupsController::class . ':selectAll')->setName('Groups.selectAll');
+	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
+    $this->get('/groups/selectAll', 'ProfPortfolio\Controllers\GroupsController:selectAll');
+	
     $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
     $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
     $this->delete('/groups/delete/{id}', GroupsController::class . ':delete')->setName('Groups.delete');

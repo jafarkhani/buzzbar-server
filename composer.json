@@ -5,10 +5,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Api\\": "app/src/api/"
+            "ProfPortfolio\\": "app"
         },
-        "classmap": ["../core/DataLayer", "../core/Http","app/src/api/", "../core/SharedModules/" ],
-        "files": ["../core/config.php", "sys_config.php"],
+        "classmap": [ "../core/DataLayer", "../core/Http", "../core/SharedModules/" ],
+        "files": ["../core/config.php"],
         "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
     }
 }

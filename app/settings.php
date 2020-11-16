@@ -11,8 +11,7 @@ return [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
         'hashSalt' => 'M1cr0S3rv1c3#1398@StW*',
-        //'APIKey' => 'AIzaSyClzfrOzB818x55$FASHvX4JuGQ!ciR9lv7q',
-        // Monolog settings
+
         'logger' => [
             'name' => 'profportfolio-service',
             'path' => __DIR__ . '/../logs/app.log',
