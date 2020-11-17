@@ -5,7 +5,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ProfPortfolio\\": "app"
+            "ProfPortfolio\\": "app",
+            "Utils\\": "app/utils"
         },
         "classmap": [ "../core/DataLayer", "../core/Http", "../core/SharedModules/" ],
         "files": ["../core/config.php"],

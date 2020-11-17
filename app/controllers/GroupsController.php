@@ -6,15 +6,7 @@
 namespace ProfPortfolio\Controllers;
 
 use Slim\Container;
-use ProfPortfolio\Controllers\BaseController;
-/*
-use Interop\Container\ContainerInterface;
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-use pdodb;
-use ResponseHelper;
-use config;
-*/
+use Utils\BaseController;
 
 use ProfPortfolio\Models\IndicatorGroups;
 

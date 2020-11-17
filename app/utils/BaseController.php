@@ -1,6 +1,6 @@
 <?php
 
-namespace ProfPortfolio\Controllers;
+namespace Utils;
 
 use HeaderKey;
 use Slim\Container;
@@ -8,8 +8,6 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use ResponseHelper;
 use PdoDataAccess;
-use Services;
-use Api\models\DocAttachment as DocAttachment;
 
 class BaseController {
 
