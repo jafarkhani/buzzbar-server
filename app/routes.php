@@ -5,10 +5,14 @@
  * Date: 1399-02
  */
 
+use ProfPortfolio\Controllers\GroupsController;
+
 $app->group('/api/v1', function () {
 	
+	$obj = new GroupsController($this["container"]);
+	
 	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
-	$this->get('/groups/selectAll', function(){return "------";});
+    $this->get('/groups/selectAll', 'ProfPortfolio\Controllers\GroupsController:selectAll');
 	
     $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
     $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
