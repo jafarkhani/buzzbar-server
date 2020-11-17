@@ -9,7 +9,7 @@ use ProfPortfolio\Controllers\GroupsController;
 
 $app->group('/api/v1', function () {
 	
-	$obj = new GroupsController($this["container"]);
+	$obj = new GroupsController(null);
 	
 	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
     $this->get('/groups/selectAll', 'ProfPortfolio\Controllers\GroupsController:selectAll');
