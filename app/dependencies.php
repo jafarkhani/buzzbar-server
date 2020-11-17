@@ -24,6 +24,7 @@ $container['logger'] = function ($container) {
     return $logger;
 };
 
+/*
 $container['errorHandler'] = function ($container) {
     return function ($request, $response, $exception) use ($container) {
        
@@ -36,4 +37,4 @@ $container['errorHandler'] = function ($container) {
 		
         return $response->withJson(['errors' => 'Something went wrong!'], 500);
     };
-};
+};*/
