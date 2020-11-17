@@ -12,6 +12,7 @@ $app->group('/api/v1', function () {
 	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
 	$this->get('/groups/selectAll', function( $request,  $response, array $args){
 		
+		echo "----";
 		$c = $this;
 		new GroupsController($c);
 		echo "----";
