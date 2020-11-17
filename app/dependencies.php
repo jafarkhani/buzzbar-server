@@ -24,15 +24,3 @@ $container['logger'] = function ($container) {
     return $logger;
 };
 
-$container['errorHandler'] = function ($container) {
-    return function ($request, $response, $exception) use ($container) {
-       
-        $container['logger']->critical($exception->getMessage() . " file:" . 
-            $exception->getFile() . " line " . $exception->getLine());
-
-		throw $exception;
-        $response = $container['response'];
-		
-        return $response->withJson(['errors' => 'Something went wrong!'], 500);
-    };
-};
