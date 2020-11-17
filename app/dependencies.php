@@ -29,9 +29,10 @@ $container['errorHandler'] = function ($container) {
        
 		$errorDesc = $exception->getMessage() . " file:" . $exception->getFile() . " line " . $exception->getLine();
         $container['logger']->critical($errorDesc);
-
-		return $errorDesc;
+		
         $response = $container['response'];
+		
+		return $response->withJson(['errors' => $errorDesc], 200);
 		
         return $response->withJson(['errors' => 'Something went wrong!'], 500);
     };
