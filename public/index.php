@@ -18,6 +18,7 @@ if (PHP_SAPI == 'cli-server') {
 // Create and configure Slim app
 require "../vendor/autoload.php";
 
+
 use \Slim\App;
 
 session_start();
