@@ -5,8 +5,6 @@
  * Date: 1399-02
  */
 
-use ProfPortfolio\Controllers\GroupsController;
-
 $app->group('/api/v1', function () {
 	
 	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
