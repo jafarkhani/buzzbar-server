@@ -1,5 +1,5 @@
 
-php_value include_path  ".;d:/projects/service/core"
+php_value include_path  "."
 
 php_value default_charset   "utf-8"
 
