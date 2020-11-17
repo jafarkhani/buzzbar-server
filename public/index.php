@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ehsani
- * Date: 12/31/18
- * Time: 8:37 AM
- */
 
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
