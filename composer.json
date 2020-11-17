@@ -8,7 +8,7 @@
             "ProfPortfolio\\": "app",
             "Utils\\": "app/utils"
         },
-        "classmap": [ "../core/DataLayer", "../core/Http", "../core/SharedModules/" ],
+        "classmap": [ "../core/DataLayer", "../core/Http", "../core/SharedModules" ],
         "files": ["../core/config.php"],
         "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
     }
