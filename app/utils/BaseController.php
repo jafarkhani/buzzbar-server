@@ -90,12 +90,7 @@ class BaseController {
 			? PdoDataAccess::fetchAll ($statement, $start, $limit)
 			: $statement->fetchAll();
 
-		$jsonData = array(
-			"iTotalRecords" => $count,
-			"iTotalDisplayRecords" => count($data),
-			"aaData" => $data
-		);
-		return ResponseHelper::createSuccessfulResponse($response,$jsonData);
+		return ResponseHelper::createSuccessfulResponse($response, $data);
 	}
 
 	public function find(Request $request, Response $response, array $args) {
