@@ -21,7 +21,7 @@ class DomainController extends BaseController{
 		$this->model = new Domains();        
     }
 	
-	public function selectDeputies(){
+	public function selectDeputies(Request $request, Response $response, array $args){
 		
 		$data = $this->model
 				->Get(" AND TypeID=1")
