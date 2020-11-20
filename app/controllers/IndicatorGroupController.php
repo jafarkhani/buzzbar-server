@@ -3,12 +3,12 @@
  * Author: rmahdizadeh
  * Date: 1398-05-05
  */
-namespace ProfPortfolio1\Controllers;
+namespace ProfPortfolio\Controllers;
 
 use Slim\Container;
 use Utils\BaseController;
 
-use ProfPortfolio1\Models\IndicatorGroups;
+use ProfPortfolio\Models\IndicatorGroups;
 
 class IndicatorGroupController extends BaseController{
 

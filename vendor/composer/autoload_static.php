@@ -25,7 +25,7 @@ class ComposerStaticInit891818575474e3c9f233c4102c9f0b31
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
-            'ProfPortfolio1\\' => 15,
+            'ProfPortfolio\\' => 14,
         ),
         'M' => 
         array (
@@ -58,7 +58,7 @@ class ComposerStaticInit891818575474e3c9f233c4102c9f0b31
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'ProfPortfolio1\\' => 
+        'ProfPortfolio\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
@@ -116,8 +116,8 @@ class ComposerStaticInit891818575474e3c9f233c4102c9f0b31
         'HttpResponse' => __DIR__ . '/../..' . '/../core/Http/HttpResponse.php',
         'OperationClass' => __DIR__ . '/../..' . '/../core/DataLayer/PdoDataAccess.class.php',
         'PdoDataAccess' => __DIR__ . '/../..' . '/../core/DataLayer/PdoDataAccess.class.php',
-        'ProfPortfolio1\\Controllers\\IndicatorGroupController' => __DIR__ . '/../..' . '/app/controllers/IndicatorGroupController.php',
-        'ProfPortfolio1\\Models\\IndicatorGroups' => __DIR__ . '/../..' . '/app/models/IndicatorGroups.php',
+        'ProfPortfolio\\Controllers\\IndicatorGroupController' => __DIR__ . '/../..' . '/app/controllers/IndicatorGroupController.php',
+        'ProfPortfolio\\Models\\IndicatorGroups' => __DIR__ . '/../..' . '/app/models/IndicatorGroups.php',
         'ResponseHelper' => __DIR__ . '/../..' . '/../core/Http/ResponseHelper.php',
         'Utils\\BaseController' => __DIR__ . '/../..' . '/app/utils/BaseController.php',
         'dataAccess' => __DIR__ . '/../..' . '/../core/DataLayer/dataAccess.class.php',

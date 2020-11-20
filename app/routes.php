@@ -5,7 +5,7 @@
  * Date: 1399-02
  */
 
-use ProfPortfolio1\Controllers\IndicatorGroupController;
+use ProfPortfolio\Controllers\IndicatorGroupController;
 
 $app->group('/api/v1', function () {
 	
