@@ -5,7 +5,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ProfPortfolio\\": "app",
+            "ProfPortfolio1\\": "app",
             "Utils\\": "app/utils"
         },
         "classmap": [ "../core/DataLayer", "../core/Http" ],

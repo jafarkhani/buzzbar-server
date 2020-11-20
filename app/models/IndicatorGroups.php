@@ -4,7 +4,7 @@
  * Date: 1399-02
 */
 
-namespace ProfPortfolio\Models;
+namespace ProfPortfolio1\Models;
 
 use DataMember;
 

@@ -25,7 +25,7 @@ class ComposerStaticInit891818575474e3c9f233c4102c9f0b31
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
-            'ProfPortfolio\\' => 14,
+            'ProfPortfolio1\\' => 15,
         ),
         'M' => 
         array (
@@ -58,7 +58,7 @@ class ComposerStaticInit891818575474e3c9f233c4102c9f0b31
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'ProfPortfolio\\' => 
+        'ProfPortfolio1\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
