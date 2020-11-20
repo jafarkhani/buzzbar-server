@@ -14,7 +14,8 @@ $app->group('/api/v1', function () {
 		
 		echo "----";
 		$c = $this;
-		new IndicatorGroupController($c);
+		$obj = new IndicatorGroupController($c);
+		print_r($obj);
 		echo "----";
 
 //'ProfPortfolio\Controllers\GroupsController:selectAll'
