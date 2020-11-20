@@ -11,7 +11,7 @@ if (PHP_SAPI == 'cli-server') {
 }
 // Create and configure Slim app
 require "../vendor/autoload.php";
-//set_include_path(get_include_path() . PATH_SEPARATOR . getenv("DOCUMENT_ROOT") . "/core");
+set_include_path(get_include_path() . PATH_SEPARATOR . getenv("DOCUMENT_ROOT") . "/core");
 
 use \Slim\App;
 
