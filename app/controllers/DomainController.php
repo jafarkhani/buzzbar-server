@@ -8,17 +8,25 @@ namespace ProfPortfolio\Controllers;
 use Slim\Container;
 use Utils\BaseController;
 
-use ProfPortfolio\Models\IndicatorGroups;
+use ProfPortfolio\Models\Domains;
 
-class IndicatorGroupController extends BaseController{
+class DomainController extends BaseController{
 
     protected $container;
 
     public function __construct(Container $container){
 		
         parent::__construct($container);
-		$this->model = new IndicatorGroups();
-        
+		$this->model = new Domains();        
     }
+	
+	public function selectDeputies(){
+		
+		$data = $this->model
+				->Get(" AND TypeID=1")
+				->fetchAll();
+		
+		return ResponseHelper::createSuccessfulResponse($response, $data);
+	}
 
 } //End of class GroupController
