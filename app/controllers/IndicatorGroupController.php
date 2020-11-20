@@ -10,7 +10,7 @@ use Utils\BaseController;
 
 use ProfPortfolio\Models\IndicatorGroups;
 
-class GroupsController extends BaseController{
+class IndicatorGroupController extends BaseController{
 
     protected $container;
     protected $IndicatorGroups;

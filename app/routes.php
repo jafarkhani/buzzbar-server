@@ -5,7 +5,7 @@
  * Date: 1399-02
  */
 
-use ProfPortfolio\Controllers\GroupsController;
+use ProfPortfolio\Controllers\IndicatorGroupController;
 
 $app->group('/api/v1', function () {
 	
@@ -14,7 +14,7 @@ $app->group('/api/v1', function () {
 		
 		echo "----";
 		$c = $this;
-		new GroupsController($c);
+		new IndicatorGroupController($c);
 		echo "----";
 
 //'ProfPortfolio\Controllers\GroupsController:selectAll'
