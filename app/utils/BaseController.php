@@ -93,7 +93,7 @@ class BaseController {
 		$jsonData = array(
 			"iTotalRecords" => $count,
 			"iTotalDisplayRecords" => count($data),
-			"Data" => $data
+			"aaData" => $data
 		);
 		return ResponseHelper::createSuccessfulResponse($response, $jsonData);
 	}
