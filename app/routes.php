@@ -7,8 +7,8 @@
 
 $app->group('/api/v1', function () {
 	
-	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:find');
-	$this->get('/groups/selectAll', 'ProfPortfolio\Controllers\IndicatorGroupController:selectAll');
+	$this->get('/IndicatorGroups/select/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:find');
+	$this->get('/IndicatorGroups/selectAll', 'ProfPortfolio\Controllers\IndicatorGroupController:selectAll');
 	
     $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
     $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
