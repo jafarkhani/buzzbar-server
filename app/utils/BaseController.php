@@ -95,9 +95,7 @@ class BaseController {
 			"iTotalDisplayRecords" => count($data),
 			"aaData" => $data
 		);
-		return ResponseHelper::createSuccessfulResponse($response)
-			->withHeader('Content-Type', 'application/json', JSON_UNESCAPED_UNICODE)
-			->write(json_encode($jsonData));
+		return ResponseHelper::createSuccessfulResponse($response,$jsonData);
 	}
 
 	public function find(Request $request, Response $response, array $args) {
