@@ -10,16 +10,7 @@ use ProfPortfolio\Controllers\IndicatorGroupController;
 $app->group('/api/v1', function () {
 	
 	$this->get('/groups/select/{id}', 'ProfPortfolio\Controllers\GroupsController:find');
-	$this->get('/groups/selectAll', function( $request,  $response, array $args){
-		
-		echo "----";
-		$c = $this;
-		$obj = new IndicatorGroupController($c);
-		print_r($obj);
-		echo "----";
-
-//'ProfPortfolio\Controllers\GroupsController:selectAll'
-	});
+	$this->get('/groups/selectAll', 'ProfPortfolio\Controllers\GroupsController:selectAll');
 	
     $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
     $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
