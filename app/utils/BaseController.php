@@ -82,7 +82,6 @@ class BaseController {
 		$params = $request->getQueryParams();
 		$this->model->validateParams($params);
 		$statement = $this->model->Get();
-		print_r(\ExceptionHandler::PopAllExceptions());
 		$count = $statement->rowCount();
 
 		$start = (int) $params['start'];
