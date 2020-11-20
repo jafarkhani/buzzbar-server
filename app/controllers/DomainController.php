@@ -7,6 +7,7 @@ namespace ProfPortfolio\Controllers;
 
 use Slim\Container;
 use Utils\BaseController;
+use ResponseHelper;
 
 use ProfPortfolio\Models\Domains;
 
