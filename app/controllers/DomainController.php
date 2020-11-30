@@ -25,8 +25,17 @@ class DomainController extends BaseController{
 	
 	public function selectDeputies(Request $request, Response $response, array $args){
 		
+		$where = "";
+		$params = [];
+		
+		$params = $request->getQueryParams();
+		if(!empty($params["search"])){
+			$where = " AND title like :search";
+			$params[":search"] = "%" . $params["search"] . "%";
+		}
+		
 		$data = $this->model
-				->Get(" AND TypeID=1")
+				->Get(" AND TypeID=1 " . $where, $params)
 				->fetchAll();
 		
 		return ResponseHelper::createSuccessfulResponse($response, $data);

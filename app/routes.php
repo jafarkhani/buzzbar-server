@@ -1,9 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: M.Fattahi
- * Date: 1399-02
- */
+//----------------------------
+//developer   : Sh.Jafarkhani
+//date        : 2020-11
+//----------------------------
+
 
 $app->group('/api/v1', function () {
 	
@@ -11,10 +11,13 @@ $app->group('/api/v1', function () {
 	
 	$this->get('/IndicatorGroups/select/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:find');
 	$this->get('/IndicatorGroups/selectAll', 'ProfPortfolio\Controllers\IndicatorGroupController:selectAll');
+	$this->post('/IndicatorGroups/save', 'ProfPortfolio\Controllers\IndicatorGroupController:save');
+	$this->get('/IndicatorGroups/delete/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:delete');
 	
-    $this->post('/groups/insert', GroupsController::class . ':insert')->setName('Groups.insert');
-    $this->post('/groups/update', GroupsController::class . ':update')->setName('Groups.update');
-    $this->delete('/groups/delete/{id}', GroupsController::class . ':delete')->setName('Groups.delete');
+	$this->get('/FormHeader/selectAll', 'ProfPortfolio\Controllers\FormHeaderController:selectAll');
+	$this->post('/FormHeader/save', 'ProfPortfolio\Controllers\FormHeaderController:save');
+	
+    
 
 });
 

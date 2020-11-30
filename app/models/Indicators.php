@@ -8,16 +8,33 @@ namespace ProfPortfolio\Models;
 
 use DataMember;
 
-class IndicatorGroups extends \OperationClass {
+class Indicators extends \OperationClass {
 
-    const TableName = "IndicatorGroups";
-    const TableKey = "GroupID";
+    const TableName = "indicators";
+    const TableKey = "IndicatorID";
 
+    public $IndicatorID;
     public $GroupID;
-    public $DeputyID;
-    public $GroupPName;
-    public $GroupEName;
+    public $IndicatorPTitle;
+    public $IndicatorETitle;
+    public $StandardValue;
+	public $ScoreUnit;
+	public $ScoreThreshold;
+	public $MaxScore;
+    public $StandardMaxScore;
+    public $objective;
+    public $ScoreReference;
+    public $ItemOrder;
     public $IsActive;
+    public $description;
+    public $ApiUrl;
+    public $ApiObjectID;
+    public $ApiObjectID2;
+    public $ApiObjectID3;
+    public $ApiTitleField;
+    public $ApiCountField;
+    public $ApiStartDateField;
+    public $ApiEndDateField;
 	
     public function __construct($id =null){
 
@@ -33,29 +50,28 @@ class IndicatorGroups extends \OperationClass {
 	static public function Get($where = '', $whereParams = array(), $pdo = null) {
 		
 		return parent::runquery_fetchMode("
-			select g.*,
-				f1.title DeputyDesc
-			from IndicatorGroups g
-				join BasicInfo f1 on(f1.TypeID=".TYPEID_indicator_deputies." AND f1.InfoID=g.DeputyID)
-			where 1=1 " . $where, $whereParams, $pdo);
-		
+			select i.*,
+				g.GroupPName
+			from indicators i
+				join IndicatorGroups g using(GroupID)
+			where 1=1 " . $where, $whereParams, $pdo);		
 	}
 	
 	public function createWhere(&$where, &$params, $search){
 		
 		$where .= " AND (
-			f1.title like :search
-			or 
 			GroupPName like :search
+			or 
+			IndicatorPTitle; like :search
 			or
-			GroupEName like :search
+			IndicatorETitle like :search
 		)";
 		$params[":search"] = "%" . $search . "%";
 	}
-	
+
 	public function Remove($pdo = null) {
 		
-		$dt = Indicators::Get(" AND GroupID=?", array($this->GroupID));
+		$dt = Form::Get(" AND GroupID=?", array($this->GroupID));
 		if($dt->rowCount() > 0){
 			$this->IsActive = "NO";
 			return $this->Edit($pdo);			

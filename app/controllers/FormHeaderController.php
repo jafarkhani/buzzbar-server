@@ -1,24 +1,23 @@
 <?php
-//----------------------------
-//developer   : Sh.Jafarkhani
-//date        : 2020-11
-//----------------------------
-
+/**
+ * Author: rmahdizadeh
+ * Date: 1398-05-05
+ */
 namespace ProfPortfolio\Controllers;
 
 use Slim\Container;
 use Utils\BaseController;
 
-use ProfPortfolio\Models\IndicatorGroups;
+use ProfPortfolio\Models\FormHeader;
 
-class IndicatorGroupController extends BaseController{
+class FormHeaderController extends BaseController{
 
     protected $container;
 
     public function __construct(Container $container){
 		
         parent::__construct($container);
-		$this->model = new IndicatorGroups();
+		$this->model = new FormHeader();
         
     }
 

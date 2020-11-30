@@ -1,9 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: M.Fattahi
- * Date: 1399-02
- */
+//----------------------------
+//developer   : Sh.Jafarkhani
+//date        : 2020-11
+//----------------------------
 
 $container = $app->getContainer();
 $container["headerInfo"] = HeaderControl::getHeaderInfo($container);
@@ -24,7 +23,7 @@ $container['logger'] = function ($container) {
     return $logger;
 };
 
-/*
+
 $container['errorHandler'] = function ($container) {
     return function ($request, $response, $exception) use ($container) {
        
@@ -35,6 +34,6 @@ $container['errorHandler'] = function ($container) {
 		
 		return $response->withJson(['errors' => $errorDesc], 200);
 		
-        return $response->withJson(['errors' => 'Something went wrong!'], 500);
+        //return $response->withJson(['errors' => 'Something went wrong!'], 500);
     };
-};*/
+};

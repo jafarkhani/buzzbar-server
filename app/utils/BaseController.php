@@ -2,12 +2,14 @@
 
 namespace Utils;
 
+use ReflectionClass;
 use HeaderKey;
 use Slim\Container;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use ResponseHelper;
 use PdoDataAccess;
+use ExceptionHandler;
 
 class BaseController {
 
@@ -81,21 +83,22 @@ class BaseController {
 
 		$params = $request->getQueryParams();
 		$this->model->validateParams($params);
-		$statement = $this->model->Get();
+		
+		$where = "";
+		$WhereParams = array();
+		if(!empty($params["search"])){
+			$this->model->createWhere($where, $WhereParams, $params["search"]);
+		}			
+		
+		$statement = $this->model->Get($where, $WhereParams);
 		$count = $statement->rowCount();
 
-		$start = (int) $params['start'];
-		$limit = (int) $params['length'];
-		$data = $start > 0
-			? PdoDataAccess::fetchAll ($statement, $start, $limit)
-			: $statement->fetchAll();
+		$start = isset($params['offset']) ? (int)$params['offset'] : 0;
+		$limit = isset($params['limit']) ? (int)$params['limit'] : 0;
 		
-		$jsonData = array(
-			"iTotalRecords" => $count,
-			"iTotalDisplayRecords" => count($data),
-			"aaData" => $data
-		);
-		return ResponseHelper::createSuccessfulResponse($response, $jsonData);
+		$data = PdoDataAccess::fetchAll ($statement, $start, $limit);
+		
+		return ResponseHelper::createBootstrapTable($response, $data, $statement->rowCount());
 	}
 
 	public function find(Request $request, Response $response, array $args) {
@@ -111,101 +114,44 @@ class BaseController {
 				->write(json_encode($record));
 	}
 
-	public function insert(Request $request, Response $response, array $args) {
-		try {
+	public function save(Request $request, Response $response, array $args) {
+		
+		$params = $request->getParsedBody();
+		$file = $request->getUploadedFiles();
 
-			$params = $request->getParsedBody();
-			//$file = $request->getUploadedFiles();
+		PdoDataAccess::FillObjectByArray($this->model, $params);
+		
+		$reflectionClass = new ReflectionClass($this->model);
+		$TableKey = $reflectionClass->getConstants()["TableKey"];
+		if(empty($this->model->{ $TableKey }))
+			$result = $this->model->Add();
+		else
+			$result = $this->model->Edit();
 
-			$this->model->validateParams($params);
-
-			if (isset($params['PersonID'])) {
-				if ($this->headerInfo[HeaderKey::PERSON_ID] != $params['PersonID'])
-					throw new \Exception('دسترسی غیر مجاز');
-			}
-
-			$this->model->doInsert($params);
-			$index = $this->model->{$this->model->getTablePk()};
-
-			/* if($this->docObj && !empty($file['attachment'])) {
-			  $fileType = $file['attachment']->getClientMediaType();
-
-			  $fileName = $file['attachment']->getClientFilename();
-			  $fileEx = substr($fileName,strrpos($fileName,'.')+1, strlen($fileName));
-
-			  $pa = array(
-			  "TargetTable" =>$this->model->getTableName(),
-			  "TargetID" => $index,
-			  "path" => $this->uploadDir,
-			  "FileName" => $fileEx,
-			  "FileType" => $fileType
-			  );
-			  $this->docObj->doInsert($pa);
-			  $index = $this->docObj->{$this->docObj->getTablePk()};
-			  $uploadDir = $this->uploadDir.$this->model->getTableName();
-			  self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
-			  } */
-
-			return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::CREATED);
-		} catch (\Exception $ex) {
-
-			return ResponseHelper::createfailureResponseByException($response, $ex->getMessage());
-		}
+		if($result)
+			return ResponseHelper::createSuccessfulResponse($response);
+		else
+			return ResponseHelper::createFailureResponseByException($response, 
+					ExceptionHandler::GetExceptionsToString("<br>"));	
 	}
-
-	public function update(Request $request, Response $response, array $args) {
-		try {
-			$params = $request->getParsedBody();
-			$file = $request->getUploadedFiles();
-
-			//input validation
-			$this->model->validateParams($params);
-
-			if (isset($params['PersonID'])) {
-				if ($this->headerInfo[HeaderKey::PERSON_ID] != $params['PersonID'])
-					throw new \Exception('دسترسی غیر مجاز');
-			}
-
-			//setId() method does Input validation for id
-			$this->model->setId($params['id']);
-			$this->model->doUpdate($params);
-
-			/* if($this->docObj && !empty($file['attachment'])) {
-
-			  $fileType = $file['attachment']->getClientMediaType();
-
-			  $fileName = $file['attachment']->getClientFilename();
-			  $fileEx = substr($fileName,strrpos($fileName,'.')+1, strlen($fileName));
-
-			  $pa = array(
-			  "TargetTable" => $this->model->getTableName(),
-			  "TargetID" => $params['id'],
-			  "path" => $this->uploadDir,
-			  "FileName" => $fileEx,
-			  "FileType" => $fileType
-			  );
-			  $this->docObj->doInsert($pa);
-			  $index = $this->docObj->{$this->docObj->getTablePk()};
-			  $uploadDir = $this->uploadDir.$this->model->getTableName();
-			  self::uploadFile($file['attachment'], $uploadDir, $index.'.'.$fileEx);
-			  } */
-
-			return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
-		} catch (\Exception $ex) {
-			return ResponseHelper::createfailureResponseByException($response, $ex->getMessage());
-		}
-	}
-
+	
 	public function delete(Request $request, Response $response, array $args) {
 		$id = $args['id'];
-		try {
-			$this->model->setId($id);
-			$this->model->doDelete();
+		
+		$reflectionClass = new ReflectionClass($this->model);
+		$TableKey = $reflectionClass->getConstants()["TableKey"];
+		$class = get_class($this->model);
+		$obj = new $class($id);
+		
+		if(empty($obj->{$TableKey}))
+			return ResponseHelper::createFailureResponseByException ($response, "ID not found");
+		
+		$result = $obj->Remove();
+		if(!$result)
+			return ResponseHelper::createFailureResponseByException ($response, ExceptionHandler::GetExceptionsToString());
 
-			return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
-		} catch (\Exception $ex) {
-			return ResponseHelper::createfailureResponseByException($response, $ex->getMessage());
-		}
+		return ResponseHelper::createSuccessfulResponse($response, \HTTPStatusCodes::OK);
+		
 	}
 
 	public static function uploadFile($file, $uploadDir, $fileName) {
