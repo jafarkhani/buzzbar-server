@@ -34,6 +34,11 @@ class DomainController extends BaseController{
 			$params[":search"] = "%" . $params["search"] . "%";
 		}
 		
+		if(!empty($args['id'])){
+			$where = " AND InfoID = :id";
+			$params[":id"] = (int)$args['id'];
+		}
+		
 		$data = $this->model
 				->Get(" AND TypeID=1 " . $where, $params)
 				->fetchAll();
