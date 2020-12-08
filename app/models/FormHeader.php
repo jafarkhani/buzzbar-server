@@ -38,7 +38,7 @@ class FormHeader extends \OperationClass {
 		return parent::runquery_fetchMode("
 			select f.*,
 				concat(p.pfname,' ',p.plname) RegPersonFullname,
-				f1.title FormStatusDesc
+				f1.InfoTitle FormStatusDesc
 			from FormHeaders f
 				left join hrmstotal.persons p on(p.PersonID=f.RegPersonID)
 				join BasicInfo f1 on(f1.TypeID=".TYPEID_FormHeaders_status." AND f1.InfoID=f.StatusID)

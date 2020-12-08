@@ -34,7 +34,7 @@ class IndicatorGroups extends \OperationClass {
 		
 		return parent::runquery_fetchMode("
 			select g.*,
-				f1.title DeputyDesc
+				f1.InfoTitle DeputyDesc
 			from IndicatorGroups g
 				join BasicInfo f1 on(f1.TypeID=".TYPEID_indicator_deputies." AND f1.InfoID=g.DeputyID)
 			where g.IsActive='YES' " . $where, $whereParams, $pdo);
