@@ -110,7 +110,6 @@ class BaseController {
 		$where .= self::MakeOrder($params);
 		
 		$statement = $this->model->Get($where, $WhereParams);
-		print_r(ExceptionHandler::PopAllExceptions());
 		$count = $statement->rowCount();
 
 		$start = isset($params['offset']) ? (int)$params['offset'] : 0;
