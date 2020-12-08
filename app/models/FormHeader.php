@@ -60,8 +60,26 @@ class FormHeader extends \OperationClass {
 	
 	public function BeforeAddTrigger($pdo = null){
 		
+		// check for uniquness of year and term
+		$dt = parent::runquery("select * from FormHeaders where FormYear=? and FormSemester=?",array(
+			$this->FormYear , $this->FormSemester
+		));
+		if(count($dt) > 0){
+			\ExceptionHandler::PushException("در این سال و ماه فرم ایجاد شده است");
+			return false;
+		}
+		
 		$this->ComputeDate = PDONOW;
 		$this->RegPersonID = parent::$headerInfo[HeaderKey::PERSON_ID];
 		return true;
+	}
+	
+	/**
+	 * list of professors that portfolio has to be computed for them
+	 */
+	static function GetRelatedProfs(){
+		return parent::runquery("
+			select * from hrmstotal.persons where person_type=1 limit 2
+		");
 	}
 }

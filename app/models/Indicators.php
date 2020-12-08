@@ -19,9 +19,9 @@ class Indicators extends \OperationClass {
     public $IndicatorETitle;
     public $StandardValue;
 	public $ScoreUnit;
-	public $ScoreThreshold;
 	public $MaxScore;
-    public $StandardMaxScore;
+	public $DeputyScore;
+    public $PercentScore;
     public $objective;
     public $ScoreReference;
     public $ItemOrder;
@@ -38,11 +38,20 @@ class Indicators extends \OperationClass {
 	
     public function __construct($id =null){
 
-        $this->DT_GroupID = DataMember::CreateDMA(DataMember::Pattern_Num);
-        $this->DT_DeputyID = DataMember::CreateDMA(DataMember::Pattern_Num);
-        $this->DT_GroupPName = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
-        $this->DT_GroupEName = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-        $this->DT_IsActive = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+		$this->DT_IndicatorID = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_GroupID = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_IndicatorPTitle = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+		$this->DT_IndicatorETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+		$this->DT_StandardValue = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_ScoreUnit = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_MaxScore = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_DeputyScore = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_PercentScore = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_objective = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_ScoreReference = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_ItemOrder = DataMember::CreateDMA(DataMember::Pattern_Num);
+		$this->DT_IsActive = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
+		$this->DT_description = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
 		
         parent::__construct($id);
     }
@@ -54,7 +63,7 @@ class Indicators extends \OperationClass {
 				g.GroupPName
 			from indicators i
 				join IndicatorGroups g using(GroupID)
-			where 1=1 " . $where, $whereParams, $pdo);		
+			where i.IsActive='YES' " . $where, $whereParams, $pdo);		
 	}
 	
 	public function createWhere(&$where, &$params, $search){

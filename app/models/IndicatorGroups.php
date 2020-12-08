@@ -37,7 +37,7 @@ class IndicatorGroups extends \OperationClass {
 				f1.title DeputyDesc
 			from IndicatorGroups g
 				join BasicInfo f1 on(f1.TypeID=".TYPEID_indicator_deputies." AND f1.InfoID=g.DeputyID)
-			where 1=1 " . $where, $whereParams, $pdo);
+			where g.IsActive='YES' " . $where, $whereParams, $pdo);
 		
 	}
 	

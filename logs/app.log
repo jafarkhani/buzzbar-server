@@ -5,3 +5,8 @@
 [2020-11-29 10:08:55] profportfolio-service.CRITICAL: Class 256 does not exist file:D:\projects\service\profportfolio\app\utils\BaseController.php line 144 [] {"uid":"2d856fe"}
 [2020-11-29 10:09:05] profportfolio-service.CRITICAL: Class 256 does not exist file:D:\projects\service\profportfolio\app\utils\BaseController.php line 144 [] {"uid":"647dfdd"}
 [2020-11-29 10:09:20] profportfolio-service.CRITICAL: Class 256 does not exist file:D:\projects\service\profportfolio\app\utils\BaseController.php line 144 [] {"uid":"05e9255"}
+[2020-12-05 13:05:41] profportfolio-service.CRITICAL: Identifier "setting" is not defined. file:D:\projects\service\profportfolio\vendor\pimple\pimple\src\Pimple\Container.php line 101 [] {"uid":"ea4a244"}
+[2020-12-05 13:06:13] profportfolio-service.CRITICAL: Identifier "setting" is not defined. file:D:\projects\service\profportfolio\vendor\pimple\pimple\src\Pimple\Container.php line 101 [] {"uid":"fc60005"}
+[2020-12-05 13:06:30] profportfolio-service.CRITICAL: Identifier "setting" is not defined. file:D:\projects\service\profportfolio\vendor\pimple\pimple\src\Pimple\Container.php line 101 [] {"uid":"45b5681"}
+[2020-12-05 13:06:39] profportfolio-service.CRITICAL: Identifier "setting" is not defined. file:D:\projects\service\profportfolio\vendor\pimple\pimple\src\Pimple\Container.php line 101 [] {"uid":"f3f726f"}
+[2020-12-05 13:06:48] profportfolio-service.CRITICAL: Identifier "setting" is not defined. file:D:\projects\service\profportfolio\vendor\pimple\pimple\src\Pimple\Container.php line 101 [] {"uid":"041f301"}

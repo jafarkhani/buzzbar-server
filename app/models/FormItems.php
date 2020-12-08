@@ -16,6 +16,7 @@ class FormItems extends \OperationClass {
 
 	public $ItemID;
     public $FormID;
+	public $PersonID;
     public $IndicatorID;
     public $ObjectID;
     public $ObjectID2;
@@ -23,6 +24,7 @@ class FormItems extends \OperationClass {
     public $ObjectTitle;
 	public $ObjectStartDate;
 	public $ObjectEndDate;
+	public $ObjectCount;
 	
     public function __construct($id =null){
 
