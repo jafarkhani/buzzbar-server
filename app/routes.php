@@ -15,7 +15,7 @@ $app->group('/api/v1', function () {
 	$this->post('/IndicatorGroups/save', 'ProfPortfolio\Controllers\IndicatorGroupController:save');
 	$this->get('/IndicatorGroups/delete/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:delete');
 	
-	$this->get('/FormHeader/selectAll', function (){return "----"});
+	$this->get('/FormHeader/selectAll', function (){return "----";});
 	$this->post('/FormHeader/save', 'ProfPortfolio\Controllers\FormHeaderController:save');
 	$this->get('/FormHeader/compute/{id}', 'ProfPortfolio\Controllers\FormHeaderController:compute');
 
