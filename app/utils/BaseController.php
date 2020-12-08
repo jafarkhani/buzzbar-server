@@ -10,6 +10,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use ResponseHelper;
 use PdoDataAccess;
 use ExceptionHandler;
+use InputValidation;
 
 class BaseController {
 
@@ -26,6 +27,22 @@ class BaseController {
 		$this->logger = $this->container['logger'];
 	}
 
+	static function MakeOrder($params){
+		
+		$sort = isset($params["sort"]) ? $params["sort"] : "";
+		$order = isset($params["order"]) ? $params["order"] : "asc"; 
+		
+		if($sort == "")
+			return "";
+		
+		if(!InputValidation::validate($sort, InputValidation::Pattern_EnAlphaNum, false))
+			throw new Exception();
+		if(!InputValidation::validate($sort, InputValidation::Pattern_EnAlphaNum, false))
+			throw new Exception();
+		
+		return " order by " . $sort . " " . $order;
+	}
+	
 	public function getDoc(Request $request, Response $response, array $args) {
 		try {
 			$params = $request->getParsedBody();
@@ -89,6 +106,8 @@ class BaseController {
 		if(!empty($params["search"])){
 			$this->model->createWhere($where, $WhereParams, $params["search"]);
 		}			
+		
+		$where .= self::MakeOrder($params);
 		
 		$statement = $this->model->Get($where, $WhereParams);
 		$count = $statement->rowCount();
