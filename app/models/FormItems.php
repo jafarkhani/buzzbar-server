@@ -25,6 +25,7 @@ class FormItems extends \OperationClass {
 	public $ObjectStartDate;
 	public $ObjectEndDate;
 	public $ObjectCount;
+	public $score;
 	
     public function __construct($id =null){
 

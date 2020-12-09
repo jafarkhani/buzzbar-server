@@ -20,6 +20,7 @@ class FormHeader extends \OperationClass {
     public $ComputeDate;
 	public $RegPersonID;
     public $IsActive;
+	public $StatusID;
 	
     public function __construct($id =null){
 
@@ -81,8 +82,29 @@ class FormHeader extends \OperationClass {
 	 * list of professors that portfolio has to be computed for them
 	 */
 	static function GetRelatedProfs(){
-		return parent::runquery("
-			select * from hrmstotal.persons where person_type=1 limit 2
-		");
+		$dt = parent::runquery("select * from hrmstotal.persons where person_type=1");
+		
+		$result = [];
+		foreach($dt as $row){
+			$result[ $row["PersonID"] ] = $row;
+		}
+		return $result;
 	}
+	
+	public function RemoveAllItems($pdo = null){
+		
+		if($this->StatusID == FormHeader_Status_confirmed){
+			\ExceptionHandler::PushException("حذف محاسبات فرم تایید شده امکان پذیر نمی باشد");
+			return false;
+		}
+		
+		if((int)$this->FormID == 0){
+			return false;
+		}
+		
+		\PdoDataAccess::runquery("delete from FormItems where FormID=?", array($this->FormID), $pdo);
+		return true;
+				
+	}
+	
 }

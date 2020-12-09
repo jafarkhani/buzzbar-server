@@ -12,9 +12,10 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use Utils\BaseController;
 use ResponseHelper;
 use HttpResponse;
+use DateModules;
 
 use ProfPortfolio\Models\FormHeader;
-use ProfPortfolio\Models\Indicators;
+use ProfPortfolio\Models\Indicator;
 use ProfPortfolio\Models\FormItems;
 
 class FormHeaderController extends BaseController{
@@ -37,31 +38,40 @@ class FormHeaderController extends BaseController{
 			return ResponseHelper::createFailureResponseByException($response, "کد فرم نامعتبر می باشد");
 		}
 		
-		$persons = FormHeader::GetRelatedProfs();
-		$response = new HttpResponse($this->container["settings"]["hashSalt"]);
-		$indicators = Indicators::Get()->fetchAll();
-		
-		$FromDate = \DateModules::shamsi_to_miladi($formObj->FormYear . 
-				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
-		$FromDate = "1880-01-01";
-		$EndDate = \DateModules::Now();
+		if(!$formObj->RemoveAllItems()){
+			return ResponseHelper::createFailureResponseByException($response, \ExceptionHandler::GetExceptionsToString());
+		}
 				
+		$persons = FormHeader::GetRelatedProfs();
+		$http = new HttpResponse($this->container["settings"]["hashSalt"]);
+		$indicators = Indicator::Get()->fetchAll();
+		
+		$FromDate = DateModules::shamsi_to_miladi($formObj->FormYear . 
+				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
+		$FromDate = "1880-01-01"; // we compute all data in for first portfolio
+		$EndDate = DateModules::Now();
+		
+		$errors = [];		
 		foreach($indicators as $indic){
 			
 			if(empty($indic["ApiUrl"]))
 				continue;
 		
-			$response->CallService(HttpResponse::METHOD_GET, $indic["ApiUrl"],[
+			$http->CallService(HttpResponse::METHOD_GET, $indic["ApiUrl"],[
 				$indic["ApiStartDateField"] => $FromDate,
 				$indic["ApiEndDateField"]  => $EndDate
 			]);
 			
-			if(!$response->isOk()){	
+			if(!$http->isOk()){	
+				$errors[] = $http->getMessage();
 				continue;
 			}
 			
-			$result = $response->getResult();
+			$result = $http->getResult();
 			foreach($result as $data){
+				
+				if(!isset($persons[ $data->PersonID ]))
+					continue;
 				
 				$obj = new FormItems();
 				$obj->FormID = $formObj->FormID;
@@ -74,8 +84,13 @@ class FormHeaderController extends BaseController{
 				$obj->ObjectStartDate = $data->{ $indic["ApiStartDateField"] };
 				$obj->ObjectEndDate = $data->{ $indic["ApiEndDateField"] };
 				$obj->ObjectCount = !empty($indic["ApiCountField"]) ? $data->{ $indic["ApiCountField"] } : 1;
-				$obj->Add();
+				$obj->score = $indic["PercentScore"]*$obj->ObjectCount;
+				if(!$obj->Add()){
+					$errors[] = \ExceptionHandler::GetExceptionsToString();
+				}
 			}
 		}
+		
+		return ResponseHelper::createSuccessfulResponse($response, $errors);
 	}
 }
