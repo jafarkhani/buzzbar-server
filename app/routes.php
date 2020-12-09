@@ -15,10 +15,10 @@ $app->group('/api/v1', function () {
 	$this->post('/IndicatorGroups/save', 'ProfPortfolio\Controllers\IndicatorGroupController:save');
 	$this->get('/IndicatorGroups/delete/{id}', 'ProfPortfolio\Controllers\IndicatorGroupController:delete');
 	
-	$this->get('/indicators/select/{id}', 'ProfPortfolio\Controllers\IndicatorController:find');
-	$this->get('/indicators/selectAll', 'ProfPortfolio\Controllers\IndicatorController:selectAll');
-	$this->post('/indicators/save', 'ProfPortfolio\Controllers\IndicatorController:save');
-	$this->get('/indicators/delete/{id}', 'ProfPortfolio\Controllers\IndicatorController:delete');
+	$this->get('/Indicators/select/{id}', 'ProfPortfolio\Controllers\IndicatorController:find');
+	$this->get('/Indicators/selectAll', 'ProfPortfolio\Controllers\IndicatorController:selectAll');
+	$this->post('/Indicators/save', 'ProfPortfolio\Controllers\IndicatorController:save');
+	$this->get('/Indicators/delete/{id}', 'ProfPortfolio\Controllers\IndicatorController:delete');
 	
 	$this->get('/FormHeader/selectAll', 'ProfPortfolio\Controllers\FormHeaderController:selectAll');
 	$this->post('/FormHeader/save', 'ProfPortfolio\Controllers\FormHeaderController:save');
