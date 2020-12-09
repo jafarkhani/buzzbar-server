@@ -32,8 +32,8 @@ $container['errorHandler'] = function ($container) {
 		
         $response = $container['response'];
 		
-		return $response->withJson(['errors' => $errorDesc], 200);
+		//return $response->withJson(['errors' => $errorDesc], 200);
 		
-        //return $response->withJson(['errors' => 'Something went wrong!'], 500);
+        return $response->withJson(['errors' => 'Something went wrong!'], 500);
     };
 };
