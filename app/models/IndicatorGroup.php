@@ -52,7 +52,7 @@ class IndicatorGroup extends \OperationClass {
 				or
 				GroupEName like :search
 			)";
-			$params[":search"] = "%" . $search . "%";
+			$params[":search"] = "%" . $QueryParams["search"] . "%";
 		}
 	}
 	

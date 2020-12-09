@@ -57,7 +57,7 @@ class FormHeader extends \OperationClass {
 				or 
 				FormYear like :search
 			)";
-			$params[":search"] = "%" . $search . "%";
+			$params[":search"] = "%" . $QueryParams["search"] . "%";
 		}
 	}
 	

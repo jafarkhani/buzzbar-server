@@ -82,7 +82,7 @@ class Indicator extends \OperationClass {
 				or
 				IndicatorETitle like :search
 			)";
-			$params[":search"] = "%" . $search . "%";
+			$params[":search"] = "%" . $QueryParams["search"] . "%";
 		}
 	}
 
