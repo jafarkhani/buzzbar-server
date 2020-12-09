@@ -7,6 +7,7 @@
 namespace ProfPortfolio\Models;
 
 use DataMember;
+use ProfPortfolio\Models\Indicator;
 
 class IndicatorGroup extends \OperationClass {
 
@@ -58,7 +59,7 @@ class IndicatorGroup extends \OperationClass {
 	
 	public function Remove($pdo = null) {
 		
-		$dt = Indicators::Get(" AND GroupID=?", array($this->GroupID));
+		$dt = Indicator::Get(" AND GroupID=?", array($this->GroupID));
 		if($dt->rowCount() > 0){
 			$this->IsActive = "NO";
 			return $this->Edit($pdo);			
