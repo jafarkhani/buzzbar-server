@@ -31,7 +31,7 @@ class DomainController extends BaseController{
 		
 		$params = $request->getQueryParams();
 		if(!empty($params["search"])){
-			$where = " AND title like :search";
+			$where = " AND InfoTitle like :search";
 			$params[":search"] = "%" . $params["search"] . "%";
 		}
 		
