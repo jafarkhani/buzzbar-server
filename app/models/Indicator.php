@@ -20,6 +20,7 @@ class Indicator extends \OperationClass {
     public $IndicatorETitle;
     public $StandardValue;
 	public $ScoreUnit;
+	public $ScoreCoef;
 	public $MaxScore;
 	public $DeputyScore;
     public $PercentScore;
@@ -45,6 +46,7 @@ class Indicator extends \OperationClass {
 		$this->DT_IndicatorETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
 		$this->DT_StandardValue = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_ScoreUnit = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+		$this->DT_ScoreCoef = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_MaxScore = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_DeputyScore = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_PercentScore = DataMember::CreateDMA(DataMember::Pattern_Num);
