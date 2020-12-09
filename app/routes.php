@@ -24,4 +24,6 @@ $app->group('/api/v1', function () {
 	$this->post('/FormHeader/save', 'ProfPortfolio\Controllers\FormHeaderController:save');
 	$this->get('/FormHeader/compute/{id}', 'ProfPortfolio\Controllers\FormHeaderController:compute');
 
+	$this->get('/Reports/Report_FormDetails/{id}', 'ProfPortfolio\Controllers\FormHeaderController:Report_FormDetails');
+	
 });

@@ -13,6 +13,7 @@ use Utils\BaseController;
 use ResponseHelper;
 use HttpResponse;
 use DateModules;
+use ReportGenerator;
 
 use ProfPortfolio\Models\FormHeader;
 use ProfPortfolio\Models\Indicator;
@@ -92,5 +93,51 @@ class FormHeaderController extends BaseController{
 		}
 		
 		return ResponseHelper::createSuccessfulResponse($response, $errors);
+	}
+	
+	public function Report_FormDetails(Request $request, Response $response, array $args){
+		
+		$FormID = (int)$args['id'];
+		
+		$formObj = new FormHeader($FormID);
+		if(empty($formObj->FormID)){
+			return ResponseHelper::createFailureResponseByException($response, "کد فرم نامعتبر می باشد");
+		}
+		
+		$dt = \PdoDataAccess::runquery("
+			select concat(pfname,' ',plname) fullname,
+					bf1.InfoTitle DeputyName,
+					DeputyID,
+					sum(if(DeputyID=1, fi.score, 0)) as EducScores,
+					sum(if(DeputyID=2, fi.score, 0)) as ReseachScores,
+					sum(if(DeputyID=3, fi.score, 0)) as CultureScores,
+					sum(if(DeputyID=4, fi.score, 0)) as ExecutiveScores					
+				
+			from FormItems fi
+				join hrmstotal.persons p using(PersoniD)
+				join indicators i using(IndicatorID)
+				join IndicatorGroups g using(GroupID)
+				join BasicInfo bf1 on(bf1.TypeID=" . TYPEID_indicator_deputies . " AND bf1.InfoID=g.DeputyID)
+			where FormID=?
+			Group by DeputyID,PersonID", array($FormID));
+
+		$rpt = new ReportGenerator();
+		$rpt->mysql_resource = $dt;
+
+		$rpt->addColumn("نام و نام خانوادگی", "fullname");
+		$rpt->addColumn("گروه آموزشی", "");
+		
+		$col = $rpt->addColumn("امتیاز آموزشی", "EducScores");
+		$col = $rpt->addColumn("امتیاز پژوهشی", "ReseachScores");
+		$col = $rpt->addColumn("امتیاز فرهنگی", "CultureScores");
+		$col = $rpt->addColumn("امتیاز اجرایی", "ExecutiveScores");
+
+		$rpt->header = "گزارش جامع کارنمای اعضای هیئت علمی به تفکیک گروه آموزشی" . "<br>" .
+				"سال تحصیلی " . $formObj->FormYear . "<br>" .
+				"ترم تحصیلی " . $formObj->FormSemester;
+		
+		$report = $rpt->generateReport();
+		
+		return \ResponseHelper::createSuccessfulResponse($response, $report);
 	}
 }
