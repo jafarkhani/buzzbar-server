@@ -46,7 +46,7 @@ class IndicatorGroup extends \OperationClass {
 		if(!empty($QueryParams["search"]))
 		{
 			$where .= " AND (
-				f1.title like :search
+				f1.InfoTitle like :search
 				or 
 				GroupPName like :search
 				or
