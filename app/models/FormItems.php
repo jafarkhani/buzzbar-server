@@ -42,7 +42,7 @@ class FormItems extends \OperationClass {
 		
 		return parent::runquery_fetchMode("
 			select fi.*,
-				fi.IndicatorPTitle
+				i.IndicatorPTitle
 			from FormItems fi
 				join indicators i using(IndicatorID)
 			where 1=1 " . $where, $whereParams, $pdo);

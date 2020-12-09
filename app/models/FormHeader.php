@@ -46,16 +46,19 @@ class FormHeader extends \OperationClass {
 		
 	}
 	
-	public function createWhere(&$where, &$params, $search){
-		
-		$where .= " AND (
-			concat(p.pfname,' ',p.plname) like :search
-			or 
-			f1.title like :search
-			or 
-			FormYear like :search
-		)";
-		$params[":search"] = "%" . $search . "%";
+	public function createWhere(&$where, &$params, $QueryParams){
+	
+		if(!empty($QueryParams["search"]))
+		{
+			$where .= " AND (
+				concat(p.pfname,' ',p.plname) like :search
+				or 
+				f1.title like :search
+				or 
+				FormYear like :search
+			)";
+			$params[":search"] = "%" . $search . "%";
+		}
 	}
 	
 	public function BeforeAddTrigger($pdo = null){

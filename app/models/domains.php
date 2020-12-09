@@ -6,8 +6,6 @@
 
 namespace ProfPortfolio\Models;
 
-use DataMember;
-
 class Domains extends \OperationClass {
 
     const TableName = "BasicInfo";

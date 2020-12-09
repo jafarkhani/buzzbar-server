@@ -8,7 +8,7 @@ namespace ProfPortfolio\Models;
 
 use DataMember;
 
-class IndicatorGroups extends \OperationClass {
+class IndicatorGroup extends \OperationClass {
 
     const TableName = "IndicatorGroups";
     const TableKey = "GroupID";
@@ -41,16 +41,19 @@ class IndicatorGroups extends \OperationClass {
 		
 	}
 	
-	public function createWhere(&$where, &$params, $search){
+	public function createWhere(&$where, &$params, $QueryParams){
 		
-		$where .= " AND (
-			f1.title like :search
-			or 
-			GroupPName like :search
-			or
-			GroupEName like :search
-		)";
-		$params[":search"] = "%" . $search . "%";
+		if(!empty($QueryParams["search"]))
+		{
+			$where .= " AND (
+				f1.title like :search
+				or 
+				GroupPName like :search
+				or
+				GroupEName like :search
+			)";
+			$params[":search"] = "%" . $search . "%";
+		}
 	}
 	
 	public function Remove($pdo = null) {

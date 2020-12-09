@@ -7,8 +7,9 @@
 namespace ProfPortfolio\Models;
 
 use DataMember;
+use ProfPortfolio\Models\FormItems;
 
-class Indicators extends \OperationClass {
+class Indicator extends \OperationClass {
 
     const TableName = "indicators";
     const TableKey = "IndicatorID";
@@ -43,15 +44,15 @@ class Indicators extends \OperationClass {
 		$this->DT_IndicatorPTitle = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
 		$this->DT_IndicatorETitle = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
 		$this->DT_StandardValue = DataMember::CreateDMA(DataMember::Pattern_Num);
-		$this->DT_ScoreUnit = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_ScoreUnit = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
 		$this->DT_MaxScore = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_DeputyScore = DataMember::CreateDMA(DataMember::Pattern_Num);
 		$this->DT_PercentScore = DataMember::CreateDMA(DataMember::Pattern_Num);
-		$this->DT_objective = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
-		$this->DT_ScoreReference = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_objective = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+		$this->DT_ScoreReference = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
 		$this->DT_ItemOrder = DataMember::CreateDMA(DataMember::Pattern_Num);
-		$this->DT_IsActive = DataMember::CreateDMA(DataMember::Pattern_EnAlphaNum);
-		$this->DT_description = DataMember::CreateDMA(DataMember::Pattern_FaAlphaNum);
+		$this->DT_IsActive = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
+		$this->DT_description = DataMember::CreateDMA(DataMember::Pattern_FaEnAlphaNum);
 		
         parent::__construct($id);
     }
@@ -66,21 +67,28 @@ class Indicators extends \OperationClass {
 			where i.IsActive='YES' " . $where, $whereParams, $pdo);		
 	}
 	
-	public function createWhere(&$where, &$params, $search){
+	public function createWhere(&$where, &$params, $QueryParams){
 		
-		$where .= " AND (
-			GroupPName like :search
-			or 
-			IndicatorPTitle; like :search
-			or
-			IndicatorETitle like :search
-		)";
-		$params[":search"] = "%" . $search . "%";
+		if(!empty($QueryParams["GroupID"])){
+			$where .= " AND GroupID=:groupid";
+			$params[":groupid"] = $QueryParams["GroupID"];
+		}
+		
+		if(!empty($QueryParams["search"])){
+			$where .= " AND (
+				GroupPName like :search
+				or 
+				IndicatorPTitle; like :search
+				or
+				IndicatorETitle like :search
+			)";
+			$params[":search"] = "%" . $search . "%";
+		}
 	}
 
 	public function Remove($pdo = null) {
 		
-		$dt = Form::Get(" AND GroupID=?", array($this->GroupID));
+		$dt = FormItems::Get(" AND IndicatorID=?", array($this->IndicatorID));
 		if($dt->rowCount() > 0){
 			$this->IsActive = "NO";
 			return $this->Edit($pdo);			

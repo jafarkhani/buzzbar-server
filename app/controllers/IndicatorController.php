@@ -9,16 +9,16 @@ namespace ProfPortfolio\Controllers;
 use Slim\Container;
 use Utils\BaseController;
 
-use ProfPortfolio\Models\IndicatorGroup;
+use ProfPortfolio\Models\Indicator;
 
-class IndicatorGroupController extends BaseController{
+class IndicatorController extends BaseController{
 
     protected $container;
 
     public function __construct(Container $container){
 		
         parent::__construct($container);
-		$this->model = new IndicatorGroup();
+		$this->model = new Indicator();
         
     }
 

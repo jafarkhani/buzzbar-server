@@ -103,10 +103,8 @@ class BaseController {
 		
 		$where = "";
 		$WhereParams = array();
-		if(!empty($params["search"])){
-			$this->model->createWhere($where, $WhereParams, $params["search"]);
-		}			
 		
+		$this->model->createWhere($where, $WhereParams, $params);
 		$where .= self::MakeOrder($params);
 		
 		$statement = $this->model->Get($where, $WhereParams);
