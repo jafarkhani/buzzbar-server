@@ -136,6 +136,7 @@ class FormHeaderController extends BaseController{
 		}
 
 		$result = $http->getResult();
+		print_r($result);
 		foreach($result as $data){
 
 			if(!isset($persons[ $data->PersonID ]))
