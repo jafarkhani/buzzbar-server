@@ -114,6 +114,7 @@ class FormHeaderController extends BaseController{
 		$persons = FormHeader::GetRelatedProfs();
 		$http = new HttpResponse($this->container["settings"]["hashSalt"]);
 		$indicators = Indicator::Get(" AND IndicatorID=?", array($IndicatorID))->fetchAll();
+		$indic = $indicators[0];
 		
 		$FromDate = DateModules::shamsi_to_miladi($formObj->FormYear . 
 				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
