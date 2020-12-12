@@ -91,7 +91,7 @@ class FormHeader extends \OperationClass {
 		return $result;
 	}
 	
-	public function RemoveAllItems($pdo = null){
+	public function RemoveAllItems($IndicatorID = "", $pdo = null){
 		
 		if($this->StatusID == FormHeader_Status_confirmed){
 			\ExceptionHandler::PushException("حذف محاسبات فرم تایید شده امکان پذیر نمی باشد");
@@ -102,7 +102,15 @@ class FormHeader extends \OperationClass {
 			return false;
 		}
 		
-		\PdoDataAccess::runquery("delete from FormItems where FormID=?", array($this->FormID), $pdo);
+		$query = "delete from FormItems where FormID=?";
+		$params = [$this->FormID];
+		
+		if($IndicatorID != ""){
+			$query = " AND IndicatorID=?";
+			$params[] = [$IndicatorID];
+		}
+		
+		\PdoDataAccess::runquery($query, $params, $pdo);
 		return true;
 				
 	}
