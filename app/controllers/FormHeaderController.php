@@ -32,7 +32,8 @@ class FormHeaderController extends BaseController{
 
 	function compute(Request $request, Response $response, array $args){
 		
-		$FormID = (int)$args['id'];
+		$params = $request->getQueryParams();
+		$FormID = (int)$params['FormID'];
 		
 		$formObj = new FormHeader($FormID);
 		if(empty($formObj->FormID)){
@@ -93,6 +94,73 @@ class FormHeaderController extends BaseController{
 		}
 		
 		return ResponseHelper::createSuccessfulResponse($response, $errors);
+	}
+	
+	function IndicatorCompute(Request $request, Response $response, array $args){
+		
+		$params = $request->getQueryParams();
+		$FormID = (int)$params['FormID'];
+		$IndicatorID = (int)$params['IndicatorID'];
+		
+		$formObj = new FormHeader($FormID);
+		if(empty($formObj->FormID)){
+			return ResponseHelper::createFailureResponseByException($response, "کد فرم نامعتبر می باشد");
+		}
+		
+		if(!$formObj->RemoveAllItems($IndicatorID)){
+			return ResponseHelper::createFailureResponseByException($response, \ExceptionHandler::GetExceptionsToString());
+		}
+				
+		$persons = FormHeader::GetRelatedProfs();
+		$http = new HttpResponse($this->container["settings"]["hashSalt"]);
+		$indicators = Indicator::Get(" AND IndicatorID=?", array($IndicatorID))->fetchAll();
+		
+		$FromDate = DateModules::shamsi_to_miladi($formObj->FormYear . 
+				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
+		$FromDate = "1880-01-01"; // we compute all data in for first portfolio
+		$EndDate = DateModules::Now();
+		
+		$errors = [];		
+		if(empty($indic["ApiUrl"])){
+			return ResponseHelper::createFailureResponseByException($response, "empty ApiUrl");
+		}
+
+		$http->CallService(HttpResponse::METHOD_GET, $indic["ApiUrl"],[
+			$indic["ApiStartDateField"] => $FromDate,
+			$indic["ApiEndDateField"]  => $EndDate
+		]);
+
+		if(!$http->isOk()){	
+			return ResponseHelper::createFailureResponseByException($response, $http->getMessage());
+		}
+
+		$result = $http->getResult();
+		foreach($result as $data){
+
+			if(!isset($persons[ $data->PersonID ]))
+				continue;
+
+			$obj = new FormItems();
+			$obj->FormID = $formObj->FormID;
+			$obj->IndicatorID = $indic["IndicatorID"];
+			$obj->PersonID = $data->PersonID;
+			$obj->ObjectID = $data->{ $indic["ApiObjectID"] };
+			$obj->ObjectID2 = !empty($indic["ApiObjectID2"]) ? $data->{$indic["ApiObjectID2"]} : PDONULL;
+			$obj->ObjectID3 = !empty($indic["ApiObjectID3"]) ? $data->{$indic["ApiObjectID3"]} : PDONULL;
+			$obj->ObjectTitle = $data->{ $indic["ApiTitleField"] };
+			$obj->ObjectStartDate = $data->{ $indic["ApiStartDateField"] };
+			$obj->ObjectEndDate = $data->{ $indic["ApiEndDateField"] };
+			$obj->ObjectCount = !empty($indic["ApiCountField"]) ? $data->{ $indic["ApiCountField"] } : 1;
+			$obj->score = round($indic["PercentScore"]*$obj->ObjectCount/$indic["ScoreCoef"],2);
+			if(!$obj->Add()){
+				$errors[] = \ExceptionHandler::GetExceptionsToString();
+			}
+		}
+		
+		if($errors == [])
+			return ResponseHelper::createSuccessfulResponse($response, $errors);
+		
+		return ResponseHelper::createFailureResponseByException($response, implode("<br>", $errors));
 	}
 	
 	function Report_FormDetails(Request $request, Response $response, array $args){
