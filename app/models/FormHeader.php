@@ -111,6 +111,8 @@ class FormHeader extends \OperationClass {
 		}
 		
 		\PdoDataAccess::runquery($query, $params, $pdo);
+		echo \PdoDataAccess::GetLatestQueryString();
+		print_r(\PdoDataAccess::PopAllExceptions());
 		return true;
 				
 	}
