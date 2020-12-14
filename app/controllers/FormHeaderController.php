@@ -110,7 +110,6 @@ class FormHeaderController extends BaseController{
 		if(!$formObj->RemoveAllItems($IndicatorID)){
 			return ResponseHelper::createFailureResponseByException($response, \ExceptionHandler::GetExceptionsToString());
 		}
-		return;
 				
 		$persons = FormHeader::GetRelatedProfs();
 		$http = new HttpResponse($this->container["settings"]["hashSalt"]);
