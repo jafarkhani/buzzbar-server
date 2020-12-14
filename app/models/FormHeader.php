@@ -101,9 +101,9 @@ class FormHeader extends \OperationClass {
 		if((int)$this->FormID == 0){
 			return false;
 		}
-		
+		$params = [];
 		$query = "delete from FormItems where FormID=?";
-		$params = [$this->FormID];
+		$params[] = $this->FormID;
 		
 		if($IndicatorID != ""){
 			$query = " AND IndicatorID=?";
