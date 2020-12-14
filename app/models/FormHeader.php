@@ -106,13 +106,11 @@ class FormHeader extends \OperationClass {
 		$params[] = $this->FormID;
 		
 		if($IndicatorID != ""){
-			$query = " AND IndicatorID=?";
+			$query .= " AND IndicatorID=?";
 			$params[] = $IndicatorID;
 		}
 		
 		\PdoDataAccess::runquery($query, $params, $pdo);
-		echo \PdoDataAccess::GetLatestQueryString();
-		print_r(\PdoDataAccess::PopAllExceptions());
 		return true;
 				
 	}
