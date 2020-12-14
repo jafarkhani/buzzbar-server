@@ -107,7 +107,7 @@ class FormHeader extends \OperationClass {
 		
 		if($IndicatorID != ""){
 			$query = " AND IndicatorID=?";
-			$params[] = [$IndicatorID];
+			$params[] = $IndicatorID;
 		}
 		
 		\PdoDataAccess::runquery($query, $params, $pdo);
