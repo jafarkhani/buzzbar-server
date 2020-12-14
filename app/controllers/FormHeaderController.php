@@ -118,7 +118,7 @@ class FormHeaderController extends BaseController{
 		
 		$FromDate = DateModules::shamsi_to_miladi($formObj->FormYear . 
 				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
-		$FromDate = "1880-01-01"; // we compute all data in for first portfolio
+		$FromDate = "2018-01-01"; // we compute all data in for first portfolio
 		$EndDate = DateModules::Now();
 		
 		$errors = [];		
