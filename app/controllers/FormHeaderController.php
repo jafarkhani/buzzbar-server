@@ -127,6 +127,8 @@ class FormHeaderController extends BaseController{
 				return ResponseHelper::createFailureResponseByException($response, "empty ApiUrl");
 			}
 echo $indic["ApiUrl"];
+echo $indic["ApiStartDateField"] . $indic["ApiEndDateField"];
+
 			$http->CallService(HttpResponse::METHOD_GET, $indic["ApiUrl"],[
 				$indic["ApiStartDateField"] => $FromDate,
 				$indic["ApiEndDateField"]  => $EndDate
