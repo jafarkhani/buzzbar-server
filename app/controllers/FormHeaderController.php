@@ -98,8 +98,6 @@ class FormHeaderController extends BaseController{
 	
 	function IndicatorCompute(Request $request, Response $response, array $args){
 		
-		ini_set("display_errors", "On");
-		return "----";
 		$params = $request->getQueryParams();
 		$FormID = (int)$params['FormID'];
 		$IndicatorID = (int)$params['IndicatorID'];
@@ -108,7 +106,7 @@ class FormHeaderController extends BaseController{
 		if(empty($formObj->FormID)){
 			return ResponseHelper::createFailureResponseByException($response, "کد فرم نامعتبر می باشد");
 		}
-		
+		return "----";
 		if(!$formObj->RemoveAllItems($IndicatorID)){
 			return ResponseHelper::createFailureResponseByException($response, \ExceptionHandler::GetExceptionsToString());
 		}
