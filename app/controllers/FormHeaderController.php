@@ -99,6 +99,7 @@ class FormHeaderController extends BaseController{
 	function IndicatorCompute(Request $request, Response $response, array $args){
 		
 		ini_set("display_errors", "On");
+		return "----";
 		$params = $request->getQueryParams();
 		$FormID = (int)$params['FormID'];
 		$IndicatorID = (int)$params['IndicatorID'];
