@@ -106,7 +106,7 @@ class FormHeaderController extends BaseController{
 		if(empty($formObj->FormID)){
 			return ResponseHelper::createFailureResponseByException($response, "کد فرم نامعتبر می باشد");
 		}
-		return "----";
+		
 		if(!$formObj->RemoveAllItems($IndicatorID)){
 			return ResponseHelper::createFailureResponseByException($response, \ExceptionHandler::GetExceptionsToString());
 		}
@@ -120,7 +120,7 @@ class FormHeaderController extends BaseController{
 				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
 		$FromDate = "2018-01-01"; // we compute all data in for first portfolio
 		$EndDate = DateModules::Now();
-		
+		return "----";
 		$errors = [];		
 		if(empty($indic["ApiUrl"])){
 			return ResponseHelper::createFailureResponseByException($response, "empty ApiUrl");
