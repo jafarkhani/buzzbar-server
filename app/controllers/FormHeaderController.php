@@ -126,7 +126,7 @@ class FormHeaderController extends BaseController{
 			if(empty($indic["ApiUrl"])){
 				return ResponseHelper::createFailureResponseByException($response, "empty ApiUrl");
 			}
-
+echo $indic["ApiUrl"];
 			$http->CallService(HttpResponse::METHOD_GET, $indic["ApiUrl"],[
 				$indic["ApiStartDateField"] => $FromDate,
 				$indic["ApiEndDateField"]  => $EndDate
