@@ -166,6 +166,7 @@ class FormHeaderController extends BaseController{
 		}
 		catch (Exception $e){
 			var_dump($e);
+			return "----";
 			return ResponseHelper::createFailureResponseByException($response, $e->getMessage());
 		}
 	}
