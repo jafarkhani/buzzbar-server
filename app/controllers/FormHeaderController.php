@@ -130,11 +130,11 @@ class FormHeaderController extends BaseController{
 			$indic["ApiStartDateField"] => $FromDate,
 			$indic["ApiEndDateField"]  => $EndDate
 		]);
-return "----";
+
 		if(!$http->isOk()){	
 			return ResponseHelper::createFailureResponseByException($response, $http->getMessage());
 		}
-
+return "----";
 		$result = $http->getResult();
 		foreach($result as $data){
 
