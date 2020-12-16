@@ -120,7 +120,7 @@ class FormHeaderController extends BaseController{
 				($formObj->FormSemester == "1" ? "-12-01" : "-06-01"));
 		$FromDate = "2018-01-01"; // we compute all data in for first portfolio
 		$EndDate = DateModules::Now();
-		return "----";
+		
 		$errors = [];		
 		if(empty($indic["ApiUrl"])){
 			return ResponseHelper::createFailureResponseByException($response, "empty ApiUrl");
@@ -130,7 +130,7 @@ class FormHeaderController extends BaseController{
 			$indic["ApiStartDateField"] => $FromDate,
 			$indic["ApiEndDateField"]  => $EndDate
 		]);
-
+return "----";
 		if(!$http->isOk()){	
 			return ResponseHelper::createFailureResponseByException($response, $http->getMessage());
 		}
