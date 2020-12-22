@@ -24,7 +24,8 @@ class PlayerController extends BaseController{
 	
 	public function AddScore(Request $request, Response $response, array $args){
 		
-		$writer = Writer::createFromPath("players", 'w+');
+		return "----";
+		$writer = Writer::createFromPath("scores", 'w+');
 		$writer->setDelimiter(";");
 		$writer->setNewline("\r\n");
 		
