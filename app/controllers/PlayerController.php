@@ -13,13 +13,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use ResponseHelper;
 use League\Csv\Writer;
 
-class PlayerController extends BaseController{
+class PlayerController {
 
     protected $container;
 
     public function __construct(Container $container){
 		
-        parent::__construct($container);
     }
 	
 	public function AddScore(Request $request, Response $response, array $args){
