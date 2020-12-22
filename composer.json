@@ -9,7 +9,7 @@
             "App\\": "app",
             "Utils\\": "app/utils"
         },
-        "classmap": [ "app","utils/Http/" ],
+        "classmap": [ "app","app/utils/Http/" ],
         
         "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
     }
