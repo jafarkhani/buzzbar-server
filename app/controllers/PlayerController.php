@@ -23,18 +23,22 @@ class PlayerController {
 	
 	public function AddScore(Request $request, Response $response, array $args){
 		
-		return "----";
-		$writer = Writer::createFromPath("scores", 'w+');
-		$writer->setDelimiter(";");
-		$writer->setNewline("\r\n");
-		
-		$params = $request->getQueryParams();
-		$writer->insertOne(array(
-			$params["player"],
-			$params["score"]
-		));
-		
-		return ResponseHelper::createSuccessfulResponse($response, $data);
+		try{
+			$writer = Writer::createFromPath("scores", 'w+');
+			$writer->setDelimiter(";");
+			$writer->setNewline("\r\n");
+
+			$params = $request->getQueryParams();
+			$writer->insertOne(array(
+				$params["player"],
+				$params["score"]
+			));
+
+			return ResponseHelper::createSuccessfulResponse($response);
+		}
+		catch (Exception $e){
+			echo $e->getMessage();
+		}
 	}
 
 } //End of class GroupController
