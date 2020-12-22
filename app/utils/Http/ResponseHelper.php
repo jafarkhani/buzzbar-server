@@ -12,6 +12,7 @@ class ResponseHelper {
         $httpresponse->setHttpStatus(200);
         $httpresponse->setResult($data);
 
+		header('Access-Control-Allow-Origin: *');
         $response->withHeader('Content-Type', 'application/json');
         $response->withStatus($httpresponse->getHttpStatus());
         $response->getBody()->write($httpresponse->getJSONEncode());
