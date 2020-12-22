@@ -1,15 +1,16 @@
 {
     "require": {
         "slim/slim": "^3.0",
-        "monolog/monolog": "^1.17"
+        "monolog/monolog": "^1.17",
+        "league/csv": "^9.6"
     },
     "autoload": {
         "psr-4": {
-            "ProfPortfolio\\": "app",
+            "App\\": "app",
             "Utils\\": "app/utils"
         },
-        "classmap": [ "../core/DataLayer", "../core/Http","../core/SharedModules", "app" ],
-        "files": ["../core/config.php"],
+        "classmap": [ "app","utils/Http/" ],
+        
         "exclude-from-classmap": ["/Tests/", "/test/", "/tests/"]
     }
 }
