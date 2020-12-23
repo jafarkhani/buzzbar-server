@@ -8,10 +8,8 @@ use App\Controllers\PlayerController;
 
 $app->group('/api/', function () {
 	
-	$this->get('test', function(){
-		new PlayerController();
-	});
 	$this->get('AddScore', 'App\Controllers\PlayerController:AddScore');
+	$this->get('GetScores', 'App\Controllers\PlayerController:GetScores');
 	
 
 });
